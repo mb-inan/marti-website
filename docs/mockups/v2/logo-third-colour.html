@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Third colour for the logo oval</title>
+<base href="../../../">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  body { background: #fff; padding: 40px; color: #222; font-size: 14px; }
+  h1 { font-stretch: 100%; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 22px; margin-bottom: 6px; color: #222; }
+  .intro { color: #666; max-width: 86ch; margin-bottom: 28px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 36px; }
+  .card { border: 1px solid #e5e5e5; border-radius: 6px; overflow: hidden; }
+  .card .name { padding: 12px 16px; font-weight: 600; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+  .card .name span { font-weight: 400; color: #777; font-size: 12px; }
+  .stage { padding: 28px 24px; display: flex; flex-direction: column; gap: 22px; align-items: center; }
+  .oval { width: 220px; height: 120px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; }
+  .oval .m { font-weight: 700; font-size: 44px; letter-spacing: -.02em; font-stretch: 100%; font-variation-settings: "wdth" 100; margin-top: 6px; }
+  .oval .t { font-size: 10px; letter-spacing: .42em; margin-top: 8px; }
+  .oval .l { font-size: 7px; letter-spacing: .1em; margin-top: 5px; opacity: .85; }
+  .wm { font-weight: 700; font-size: 20px; letter-spacing: .16em; font-stretch: 125%; font-variation-settings: "wdth" 125; }
+  .legend { font-size: 10px; color: #777; display: flex; gap: 14px; }
+  .legend b { display: block; color: #333; font-weight: 500; }
+  .sw { display: flex; width: 100%; }
+  .sw div { flex: 1; height: 18px; }
+  .seam { margin-top: 40px; }
+  .seam h2 { font-size: 16px; font-weight: 500; color: #222; margin-bottom: 8px; font-stretch: 100%; font-variation-settings: "wdth" 100; }
+  .seam p { color: #666; max-width: 86ch; }
+  .demo { position: relative; height: 260px; background: #F5EFE7; border-radius: 6px; overflow: hidden; border: 1px solid #eee; }
+  .demo .d-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 200px; padding: 24px; }
+  .demo .d-rail .wm { color: #C9573A; font-size: 15px; }
+  .demo .d-rail small { display: block; color: #7A6A5F; font-size: 10px; margin-top: 4px; }
+  .demo .d-rail nav { margin-top: 22px; display: grid; gap: 7px; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #4A2E24; }
+  .demo .d-page { position: absolute; left: 200px; top: 0; right: 0; bottom: 0; background: #F5EFE7; }
+  .demo .d-page .d-hero { position: absolute; left: 24px; top: 18px; right: 24px; height: 150px; background: #5a3b31; border-radius: 6px; }
+  .demo .d-page .d-hero b { position: absolute; left: 20px; bottom: 18px; color: #fff; font-stretch: 75%; font-variation-settings: "wdth" 75; font-size: 26px; font-weight: 600; }
+  .demo svg { position: absolute; left: 194px; top: 0; height: 100%; width: 12px; overflow: visible; }
+</style>
+</head>
+<body>
+<h1>Third colour: replacing the blue oval of the original Martı Tekstil logo</h1>
+<p class="intro">The original sign is a navy oval with coral letters. In the new palette the letters become the clay accent (#C9573A). The oval needs a colour that is neither the ground nor the band, so it reads as a third element. Four candidates, each shown as the oval mark and next to the MARTI wordmark that the website uses.</p>
+
+<div class="row">
+  <div class="card">
+    <div class="name">T1 Deep brown <span>the footer colour</span></div>
+    <div class="stage">
+      <div class="oval" style="background:#3B2520;color:#C9573A"><span class="m">martı</span><span class="t" style="color:#F5EFE7">TEKSTİL</span><span class="l" style="color:#F5EFE7">LTD. ŞTİ.</span></div>
+      <span class="wm" style="color:#C9573A">MARTI</span>
+      <div class="legend"><span><b>#3B2520</b>oval</span><span><b>#C9573A</b>letters</span><span><b>#F5EFE7</b>small text</span></div>
+    </div>
+    <div class="sw"><div style="background:#F5EFE7"></div><div style="background:#8E4A3A"></div><div style="background:#C9573A"></div><div style="background:#3B2520"></div></div>
+  </div>
+  <div class="card">
+    <div class="name">T2 Olive <span>complementary to the clay</span></div>
+    <div class="stage">
+      <div class="oval" style="background:#5F6B4F;color:#F5EFE7"><span class="m">martı</span><span class="t">TEKSTİL</span><span class="l">LTD. ŞTİ.</span></div>
+      <span class="wm" style="color:#C9573A">MARTI</span>
+      <div class="legend"><span><b>#5F6B4F</b>oval</span><span><b>#F5EFE7</b>letters</span></div>
+    </div>
+    <div class="sw"><div style="background:#F5EFE7"></div><div style="background:#8E4A3A"></div><div style="background:#C9573A"></div><div style="background:#5F6B4F"></div></div>
+  </div>
+  <div class="card">
+    <div class="name">T3 Dusty teal <span>a nod to the old blue</span></div>
+    <div class="stage">
+      <div class="oval" style="background:#3E5F63;color:#F5EFE7"><span class="m">martı</span><span class="t">TEKSTİL</span><span class="l">LTD. ŞTİ.</span></div>
+      <span class="wm" style="color:#C9573A">MARTI</span>
+      <div class="legend"><span><b>#3E5F63</b>oval</span><span><b>#F5EFE7</b>letters</span></div>
+    </div>
+    <div class="sw"><div style="background:#F5EFE7"></div><div style="background:#8E4A3A"></div><div style="background:#C9573A"></div><div style="background:#3E5F63"></div></div>
+  </div>
+  <div class="card">
+    <div class="name">T4 Warm charcoal <span>neutral, modern</span></div>
+    <div class="stage">
+      <div class="oval" style="background:#3A3331;color:#C9573A"><span class="m">martı</span><span class="t" style="color:#F5EFE7">TEKSTİL</span><span class="l" style="color:#F5EFE7">LTD. ŞTİ.</span></div>
+      <span class="wm" style="color:#C9573A">MARTI</span>
+      <div class="legend"><span><b>#3A3331</b>oval</span><span><b>#C9573A</b>letters</span></div>
+    </div>
+    <div class="sw"><div style="background:#F5EFE7"></div><div style="background:#8E4A3A"></div><div style="background:#C9573A"></div><div style="background:#3A3331"></div></div>
+  </div>
+</div>
+
+<div class="seam">
+  <h2>For reference: what a machine-stitch seam between the rail and the page would look like</h2>
+  <p>Lockstitch pattern, 2 px thread in the clay accent, 7 px stitch length. Sewn for the top two thirds; open (dashes fade, a faint shadow suggests the lifted edge) for the bottom third. Static here; on the site the sewn length would follow the scroll.</p>
+  <div class="demo">
+    <div class="d-rail"><span class="wm">MARTI</span><small>Womenswear manufacturing.</small><nav><span>Capabilities</span><span>Process</span><span>Factory</span><span>Compliance</span><span>Contact</span></nav></div>
+    <div class="d-page"><div class="d-hero"><b>The shirt, the blouse, the dress.</b></div></div>
+    <svg viewBox="0 0 12 260" aria-hidden="true">
+      <defs><linearGradient id="fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="260"><stop offset="0.62" stop-color="#C9573A" stop-opacity="1"/><stop offset="0.70" stop-color="#C9573A" stop-opacity="0"/></linearGradient>
+      <linearGradient id="shade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="260"><stop offset="0.62" stop-color="#3B2520" stop-opacity="0"/><stop offset="0.72" stop-color="#3B2520" stop-opacity=".18"/><stop offset="1" stop-color="#3B2520" stop-opacity=".22"/></linearGradient></defs>
+      <rect x="6" y="0" width="6" height="260" fill="url(#shade)"/>
+      <line x1="6" y1="0" x2="6" y2="260" stroke="url(#fade)" stroke-width="2.5" stroke-dasharray="7 4" stroke-linecap="round"/>
+    </svg>
+  </div>
+</div>
+</body>
+</html>

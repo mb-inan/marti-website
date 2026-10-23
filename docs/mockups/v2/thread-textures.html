@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thread textures — alternatives for the seam</title>
+<style>
+  @font-face { font-family: "Archivo"; src: url("../../../assets/fonts/archivo-latin-standard-normal.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
+  :root { --ground:#F5EFE7; --paper:#FBF8F3; --ink:#4A2E24; --text:#3A302B; --muted:#7A6A5F; --line:#DCCFC2; --accent:#C9573A; --linen:url("../../../assets/img/linen.webp"); }
+  html,body { margin:0; background:#EDE4D9; color:var(--text); font: 15px/1.5 "Archivo", system-ui, sans-serif; }
+  .sheet { padding: 36px 40px 60px; }
+  h1 { font-weight: 500; font-size: 22px; margin: 0 0 4px; color: var(--ink); }
+  .sub { color: var(--muted); margin: 0 0 28px; max-width: 78ch; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+  .card { background: var(--paper); border-radius: 8px; padding: 18px 16px 20px; }
+  .card h2 { font-size: 14.5px; font-weight: 600; margin: 0 0 2px; color: var(--ink); }
+  .card h2 span { display:inline-block; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px; background: var(--ink); color: #fff; font-size: 11.5px; text-align:center; line-height: 22px; margin-right: 8px; }
+  .card p { margin: 0 0 14px; color: var(--muted); font-size: 13px; min-height: 78px; }
+  .row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; }
+  .lbl { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  .slice { position: relative; height: 420px; background: var(--ground) var(--linen) 0 0 / 360px 360px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+  .slice .rail { position:absolute; left:0; top:0; bottom:0; width: 48px; }
+  .slice .edge { position:absolute; left:48px; top:0; bottom:0; width: 0; }
+  .mag { position: relative; height: 420px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: var(--ground) var(--linen) 0 0 / 1440px 1440px; }
+  .mag .zoom { position:absolute; left: -144px; top: -908px; width: 96px; height: 420px; transform: scale(4); transform-origin: top left; }
+  .mag .zoom .slice { border: 0; background: none; }
+  svg.seam { position:absolute; left: calc(48px - 13px); top:0; width: 26px; height: 420px; overflow: visible; }
+  svg.seam path { fill:none; stroke-linecap: round; stroke-linejoin: round; }
+  .note { margin-top: 26px; color: var(--muted); font-size: 13px; max-width: 86ch; }
+
+  /* ---- T1: as built (v0.6) — shadow, body, lit edge ---- */
+  .T1 .th-shadow { stroke:#2A1208; stroke-width:2.9; opacity:.26; transform: translate(.9px,1.1px); }
+  .T1 .th-body { stroke:#C9573A; stroke-width:2.4; }
+  .T1 .rows .th-body { stroke:#B8502F; }
+  .T1 .th-light { stroke:#F3B197; stroke-width:.8; opacity:.72; transform: translate(-.45px,-.35px); }
+
+  /* ---- T2: twisted (two-ply) — body painted with a diagonal twist pattern, dark edge, soft highlight ---- */
+  .T2 .th-shadow { stroke:#2A1208; stroke-width:3; opacity:.28; transform: translate(.9px,1.1px); }
+  .T2 .th-dark { stroke:#8A3521; stroke-width:2.7; }
+  .T2 .th-body { stroke:url(#twist); stroke-width:2.4; }
+  .T2 .th-light { stroke:#F6C2AA; stroke-width:.7; opacity:.6; transform: translate(-.5px,-.4px); }
+
+  /* ---- T3: matte cotton — slightly hairy edge (turbulence), low sheen ---- */
+  .T3 .th-shadow { stroke:#2A1208; stroke-width:3; opacity:.22; transform: translate(.8px,1px); }
+  .T3 .th-fuzz { stroke:#C9573A; stroke-width:3.2; opacity:.35; filter:url(#fuzz); }
+  .T3 .th-body { stroke:#C4563B; stroke-width:2.3; filter:url(#fuzz-soft); }
+  .T3 .th-light { stroke:#E9A48B; stroke-width:.9; opacity:.5; transform: translate(-.4px,-.3px); }
+
+  /* ---- T4: glossy polyester — strong specular, dark rim ---- */
+  .T4 .th-shadow { stroke:#2A1208; stroke-width:3; opacity:.3; transform: translate(1px,1.2px); }
+  .T4 .th-dark { stroke:#6E2A1A; stroke-width:2.8; }
+  .T4 .th-body { stroke:#CE5A3C; stroke-width:2.2; }
+  .T4 .th-light { stroke:#FFE3D6; stroke-width:.7; opacity:.9; transform: translate(-.55px,-.45px); }
+
+  /* ---- T5: heavy topstitching thread — thicker, twisted, more presence ---- */
+  .T5 .th-shadow { stroke:#2A1208; stroke-width:3.8; opacity:.3; transform: translate(1.1px,1.3px); }
+  .T5 .th-dark { stroke:#8A3521; stroke-width:3.5; }
+  .T5 .th-body { stroke:url(#twist2); stroke-width:3.1; }
+  .T5 .th-light { stroke:#F6C2AA; stroke-width:.9; opacity:.65; transform: translate(-.6px,-.5px); }
+
+  /* holes: H1 dent (as built) / H2 punched (darker, with a raised rim) */
+  .H2 .hole-rim { display: initial; }
+  .hole-rim { display: none; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>Thread textures</h1>
+  <p class="sub">Same chain-stitch geometry as the live seam, five ways of painting the thread. Sewn two thirds; below the live end there is no thread at all, only the needle holes (as you asked), and the loose tail. Left of each card is actual size on the linen; right is 4× at the point where sewn meets open.</p>
+  <div class="grid" id="grid"></div>
+  <p class="note">T2 and T5 paint the thread with a diagonal two-ply twist; T3 roughens the edge with a little turbulence so it reads as cotton; T4 pushes the highlight for a polyester sheen. Hole style: the first three cards use the current soft dent, the last two a punched hole with a faint raised rim — tell me which hole you prefer independently of the thread.</p>
+</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <pattern id="twist" patternUnits="userSpaceOnUse" width="3.2" height="3.2" patternTransform="rotate(38)">
+      <rect width="3.2" height="3.2" fill="#C9573A"/><rect width="1.1" height="3.2" fill="#E07A5C"/><rect x="1.9" width=".7" height="3.2" fill="#A3432B"/>
+    </pattern>
+    <pattern id="twist2" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(38)">
+      <rect width="4" height="4" fill="#C9573A"/><rect width="1.4" height="4" fill="#E07A5C"/><rect x="2.4" width=".9" height="4" fill="#A3432B"/>
+    </pattern>
+    <filter id="fuzz" x="-30%" y="-5%" width="160%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.6"/><feGaussianBlur stdDeviation=".35"/></filter>
+    <filter id="fuzz-soft" x="-30%" y="-5%" width="160%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale=".7"/></filter>
+    <radialGradient id="hole"><stop offset="0" stop-color="#241109" stop-opacity=".55"/><stop offset=".55" stop-color="#241109" stop-opacity=".18"/><stop offset="1" stop-color="#241109" stop-opacity="0"/></radialGradient>
+    <radialGradient id="hole2"><stop offset="0" stop-color="#1A0B05" stop-opacity=".8"/><stop offset=".45" stop-color="#241109" stop-opacity=".35"/><stop offset="1" stop-color="#241109" stop-opacity="0"/></radialGradient>
+  </defs>
+</svg>
+
+<script>
+const W=26, X1=8, X2=18, PITCH=15, STITCH=11.5, H=420, SEWN=.66;
+const CARDS = [
+  ["T1","As built","Shadow, body, lit edge — the v0.6 rendering, for comparison.","H1"],
+  ["T2","Twisted","A two-ply twist painted along the thread, a dark rim, softer highlight. Reads as sewing thread under a loupe.","H1"],
+  ["T3","Matte cotton","Edges roughened with a little noise, low sheen. Hairy, soft, like unmercerised cotton.","H1"],
+  ["T4","Glossy polyester","Strong specular line and a dark rim — the look of core-spun polyester topstitch thread.","H2"],
+  ["T5","Heavy topstitch","Thicker (3.1 px) and twisted. Most presence on the page; the one you see from across the room.","H2"],
+];
+function geometry(){
+  const n=Math.ceil(H/PITCH)+2; let loop="", stitches=[], holes=[];
+  for(let i=0;i<n;i++){ const y=i*PITCH, yb=y+PITCH;
+    holes.push([X1,y+STITCH+1.2],[X2,y+STITCH+1.2]);
+    stitches.push({y1:y+0.8,y2:y+STITCH, done: yb});
+    loop += (i?"":`M${X1},${y} `) + `C${X1+3},${y+3} ${X2-3.5},${yb-6} ${X2},${yb-3.2} C${X2+3.4},${yb-1.6} ${X2+2.2},${yb+1.8} ${X2-1.4},${yb+0.6} C${X2-4},${yb-0.4} ${X1+3.6},${yb-0.2} ${X1+1.4},${yb+0.4} C${X1-2.4},${yb+1.6} ${X1-2.6},${yb-1.8} ${X1},${yb} `;
+  }
+  return {loop, stitches, holes};
+}
+function seamSVG(cls, holeCls){
+  const g=geometry();
+  const layers = cls==="T1" ? ["th-shadow","th-body","th-light"] : cls==="T3" ? ["th-shadow","th-fuzz","th-body","th-light"] : ["th-shadow","th-dark","th-body","th-light"];
+  let s=`<svg class="seam ${cls} ${holeCls}" viewBox="0 0 ${W} ${H}">`;
+  s+=`<g class="holes">`+g.holes.map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="2.1" ry="1.2" fill="url(#${holeCls==="H2"?"hole2":"hole"})"/><ellipse class="hole-rim" cx="${x}" cy="${y-1.1}" rx="1.6" ry=".5" fill="#fff" opacity=".45"/>`).join("")+`</g>`;
+  // rows: only stitches the looper has reached
+  const endY = SEWN*H;
+  const rows = g.stitches.filter(st=>st.done<=endY+1).map(st=>`M${X1},${st.y1} L${X1},${st.y2} M${X2},${st.y1} L${X2},${st.y2}`).join(" ");
+  s+=`<g class="rows">`+layers.map(l=>`<path class="${l}" d="${rows}"/>`).join("")+`</g>`;
+  // looper: revealed along its length — approximate by trimming to whole pitches
+  const pitches = Math.floor(endY/PITCH);
+  const n=Math.ceil(H/PITCH)+2; const perPitch = g.loop.length/n; // crude but geometry is uniform per pitch
+  const parts = g.loop.split("C"); const keep = 1 + pitches*4; const loopD = parts.slice(0,keep).join("C");
+  s+=`<g class="loop">`+layers.map(l=>`<path class="${l}" d="${loopD}"/>`).join("")+`</g>`;
+  // tail: a draped curve from the end
+  const ex=X1, ey=pitches*PITCH;
+  const tail=`M${ex},${ey} C${ex-1},${ey+8} ${ex-6},${ey+12} ${ex-5},${ey+20} S${ex-9},${ey+28} ${ex-10},${ey+30}`;
+  s+=`<g class="tail">`+layers.map(l=>`<path class="${l}" d="${tail}"/>`).join("")+`</g>`;
+  return s+`</svg>`;
+}
+const grid=document.getElementById("grid");
+for(const [id,name,desc,hole] of CARDS){
+  const card=document.createElement("div"); card.className="card";
+  card.innerHTML=`<h2><span>${id}</span>${name}</h2><p>${desc}</p>
+    <div class="row">
+      <div><p class="lbl">1×</p><div class="slice"><div class="rail"></div>${seamSVG(id,hole)}</div></div>
+      <div><p class="lbl">4×</p><div class="mag"><div class="zoom"><div class="slice">${seamSVG(id,hole)}</div></div></div></div>
+    </div>`;
+  grid.appendChild(card);
+}
+</script>
+</body>
+</html>

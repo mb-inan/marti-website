@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — MARTI</title>
+  <meta name="description" content="Contact MARTI: production in Bergama, İzmir, commercial office in Manchester. Send a tech pack for a costing.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-light">
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Start a conversation</h1>
+      <p class="lede">Send a tech pack, a reference or a question. A first answer within two working days; a costing and a sampling plan within three.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid g-7-5">
+      <div>
+        <!-- Form action is a placeholder. Options: Formspree (free tier), Netlify Forms, or a mailto fallback. See docs/HANDOVER.md. -->
+        <form class="form" action="https://formspree.io/f/PLACEHOLDER" method="POST" data-ph="T-formaction">
+          <div><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div><label for="f-company">Brand or company</label><input id="f-company" name="company" type="text" autocomplete="organization" required></div>
+          <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div><label for="f-role">You are</label>
+            <select id="f-role" name="role">
+              <option>A brand</option><option>A sourcing agent</option><option>A buying office</option><option>Other</option>
+            </select></div>
+          <div><label for="f-cat">Category</label>
+            <select id="f-cat" name="category">
+              <option>Shirts</option><option>Blouses</option><option>Dresses</option><option>Skirts or co-ords</option><option>Lightweight jackets</option><option>Several / other womenswear</option>
+            </select></div>
+          <div><label for="f-qty">Quantity per style</label><input id="f-qty" name="quantity" type="text" placeholder="e.g. 600, in 2 colours"></div>
+          <div><label for="f-fabric">Fabric</label>
+            <select id="f-fabric" name="fabric">
+              <option>We supply the fabric</option><option>Nominated mill, you buy</option><option>You develop and source</option><option>Not decided</option>
+            </select></div>
+          <div><label for="f-date">Target delivery</label><input id="f-date" name="delivery" type="text" placeholder="e.g. week 12, 2027"></div>
+          <div class="full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Tell us about the style, or paste a link to your tech pack."></textarea>
+            <p class="hint">Attachments: email them to <mark class="ph" data-ph="T-mail-uk">hello@[domain]</mark> after sending this form.</p></div>
+          <div class="full"><button class="btn" type="submit">Send</button></div>
+        </form>
+      </div>
+
+      <div>
+        <h3>What helps us quote quickly</h3>
+        <ul class="checklist mt-1">
+          <li>Tech pack, or a reference garment and a sketch</li>
+          <li>Size chart and size ratio</li>
+          <li>Quantity per style and per colour</li>
+          <li>Fabric: who supplies it, and its composition and weight</li>
+          <li>Target FOB or delivered price, if you have one</li>
+          <li>Delivery date and destination</li>
+        </ul>
+        <hr class="rule mt-3">
+        <div class="addr mt-3" style="grid-template-columns:1fr;gap:28px">
+          <div>
+            <h3>Production</h3>
+            <address>Martı Tekstil Ltd. Şti.<br><mark class="ph" data-ph="T-addr-tr">[Street, number]</mark><br>Bergama, İzmir, Türkiye<br><a href="mailto:production@example.com"><mark class="ph" data-ph="T-mail-tr">production@[domain]</mark></a><br><mark class="ph" data-ph="T-tel-tr">+90 [number]</mark></address>
+          </div>
+          <div>
+            <h3>Commercial office</h3>
+            <address><mark class="ph" data-ph="T-ukco">[UK Ltd name]</mark><br><mark class="ph" data-ph="T-addr-uk">[Street, number]</mark><br>Manchester, United Kingdom<br><a href="mailto:hello@example.com"><mark class="ph" data-ph="T-mail-uk2">hello@[domain]</mark></a><br><mark class="ph" data-ph="T-tel-uk">+44 [number]</mark></address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <figure><div class="fig r-16x9"><img src="assets/img/ph/G1.jpg" alt="Placeholder: map of İzmir and Manchester" loading="lazy"></div><figcaption>Production in Bergama, İzmir. Commercial office in Manchester. Road freight to the United Kingdom and Europe within 7–10 days.</figcaption></figure>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

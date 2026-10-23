@@ -1,0 +1,415 @@
+{
+ "_note": "Single source of truth for image/video placeholders. tools/build_placeholders.py renders assets/img/ph/<id>.jpg and docs/PHOTO_BRIEF.md from this file. 'ref' = reference file in assets/img/ref or assets/video. 'reshoot' = what must change before the frame can be published.",
+ "slots": [
+  {
+   "id": "H1",
+   "section": "Home — hero film",
+   "type": "video",
+   "aspect": "16:9",
+   "title": "Hero film loop",
+   "shoot": "Landscape. 3–4 silent clips of 8–12 s, camera fixed: hands sewing, the line, marker paper on the lay, hanging store. Nobody looks at camera. LED rows and the red-brown floor in frame.",
+   "ref": "video/ref-v1-goh-loading-a.mp4",
+   "reshoot": "Reference clips are portrait phone footage; shoot landscape, steady, and without customer hangers or tags in frame."
+  },
+  {
+   "id": "H2",
+   "section": "Home — hero fallback still",
+   "type": "image",
+   "aspect": "16:9",
+   "title": "Hero still (shown while film loads, and on slow connections)",
+   "shoot": "High angle across the production hall or the hanging store, landscape, one side quiet for the headline.",
+   "ref": "img/ref/ref-10-hanging-store-depth.jpg",
+   "reshoot": "Landscape version; remove customer hangers/tags from the front rail."
+  },
+  {
+   "id": "W1",
+   "section": "Home — what we make",
+   "type": "image",
+   "aspect": "4:5",
+   "title": "Finished garments, bagged, on the black steel rail",
+   "shoot": "Close, side light; our own size cards; no customer branding.",
+   "ref": "img/ref/ref-06-garments-bagged-close.jpg",
+   "reshoot": "Replace customer hangers with plain hangers; remove swing tags."
+  },
+  {
+   "id": "P1",
+   "section": "Home — product grid",
+   "type": "image",
+   "aspect": "1:1",
+   "title": "Shirt on the tailor's dummy",
+   "shoot": "Same light, same angle, neutral ground for every product frame. Square crop.",
+   "ref": "video/ref-v3-dummy-dress.mp4",
+   "reshoot": "Use a woven shirt; keep the dummy centred; plain wall behind."
+  },
+  {
+   "id": "P2",
+   "section": "Home — product grid",
+   "type": "image",
+   "aspect": "1:1",
+   "title": "Blouse with pleat or ruffle detail",
+   "shoot": "Same setup as P1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "P3",
+   "section": "Home — product grid",
+   "type": "image",
+   "aspect": "1:1",
+   "title": "Dress, woven",
+   "shoot": "Same setup as P1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "P4",
+   "section": "Home — product grid",
+   "type": "image",
+   "aspect": "1:1",
+   "title": "Skirt",
+   "shoot": "Same setup as P1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "P5",
+   "section": "Home — product grid",
+   "type": "image",
+   "aspect": "1:1",
+   "title": "Co-ord set",
+   "shoot": "Same setup as P1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "P6",
+   "section": "Home — product grid",
+   "type": "image",
+   "aspect": "1:1",
+   "title": "Lightweight jacket or overshirt",
+   "shoot": "Same setup as P1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "P7",
+   "section": "Home — product grid",
+   "type": "image",
+   "aspect": "1:1",
+   "title": "Collar and cuff detail, close",
+   "shoot": "Real stitching, unretouched.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "P8",
+   "section": "Home — product grid",
+   "type": "image",
+   "aspect": "1:1",
+   "title": "Placket and buttonhole detail, close",
+   "shoot": "Real stitching, unretouched.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "D1",
+   "section": "Capabilities — development",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Pattern work",
+   "shoot": "Pattern paper, ruler and pattern on the table, hands working; screen may be in frame but is not the subject.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "D2",
+   "section": "Capabilities — development",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Marker making",
+   "shoot": "Marker coming off the plotter or being checked on the table; our model code visible. The machine is incidental, not the subject.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "D3",
+   "section": "Capabilities — development",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Sample fitting on the dummy",
+   "shoot": "Pattern maker pinning; dummy; pattern paper behind.",
+   "ref": "video/ref-v3-dummy-dress.mp4",
+   "reshoot": "Add the person working; landscape."
+  },
+  {
+   "id": "C1",
+   "section": "Capabilities — cutting",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Spreading the lay",
+   "shoot": "Layers being spread on the table, high angle.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "C2",
+   "section": "Capabilities — cutting",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Marker paper on the lay",
+   "shoot": "MARTI TEKSTİL printed marker laid on top of the fabric layers; our model code visible.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "C3",
+   "section": "Capabilities — cutting",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Straight knife and steel glove",
+   "shoot": "Worn chain-mail glove; red cable rail from the ceiling in frame.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "M1",
+   "section": "Capabilities — sewing",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "The line, wide",
+   "shoot": "Rows of machines, LED rows, people working, nobody posing.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "M2",
+   "section": "Capabilities — sewing",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Hands at the needle",
+   "shoot": "Close, white fabric, side light.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "M3",
+   "section": "Capabilities — sewing",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Special machine (buttonhole or button attach)",
+   "shoot": "Machine working; the belted old Juki as an alternative detail.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "F1",
+   "section": "Capabilities — finishing",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Pressing and steam",
+   "shoot": "Unstaged; ironing a shirt.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "F2",
+   "section": "Capabilities — finishing",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Quality control table, top-down",
+   "shoot": "Checker measuring with a tape; eyes on the garment.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "F3",
+   "section": "Capabilities — finishing",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Hanging store, wide",
+   "shoot": "Black steel rails, bagged garments, our size cards.",
+   "ref": "img/ref/ref-03-hanging-store-wide.jpg",
+   "reshoot": "Plain hangers, no swing tags; tidy the loose cards."
+  },
+  {
+   "id": "F4",
+   "section": "Capabilities — finishing",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Size cards and bagging",
+   "shoot": "Our own printed size cards on the rail; polybagging in progress.",
+   "ref": "img/ref/ref-05-hanging-store-size-cards.jpg",
+   "reshoot": "Printed MARTI size cards instead of handwritten; no customer hangers."
+  },
+  {
+   "id": "L1",
+   "section": "Capabilities — logistics",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Loading hanging garments at the bay",
+   "shoot": "Trailer doors open, rail of bagged garments going in, daylight behind.",
+   "ref": "img/ref/ref-12-loading-bay-trailer.jpg",
+   "reshoot": "Landscape; no visible customer tags; keep the trailer's own branding out of frame or crop."
+  },
+  {
+   "id": "L2",
+   "section": "Capabilities — logistics",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Trailer interior with hanging rails",
+   "shoot": "Depth shot down the trailer, garments on rails.",
+   "ref": "video/ref-v4-trailer-interior.mp4",
+   "reshoot": "Landscape still; steady."
+  },
+  {
+   "id": "L3",
+   "section": "Capabilities — logistics",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Trailer in the yard",
+   "shoot": "Trailer at the building, morning light.",
+   "ref": "img/ref/ref-01-trailer-dfds-yard.jpg",
+   "reshoot": "The haulier's logo is a third party's mark; shoot from an angle that hides it, or use a plain trailer."
+  },
+  {
+   "id": "Q1",
+   "section": "Compliance",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Measuring a finished garment",
+   "shoot": "Tape on a collar or sleeve; QC sheet beside it.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "Q2",
+   "section": "Compliance",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Clean corridor with exit signs and extinguisher",
+   "shoot": "Unstaged; shows the standard of the place.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "E1",
+   "section": "Factory — people",
+   "type": "image",
+   "aspect": "4:5",
+   "title": "Production director, working portrait",
+   "shoot": "Same lens and background as E2–E5; not smiling at camera; at the planning board or on the floor.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "E2",
+   "section": "Factory — people",
+   "type": "image",
+   "aspect": "4:5",
+   "title": "Working portrait 2 (cutting)",
+   "shoot": "Same series as E1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "E3",
+   "section": "Factory — people",
+   "type": "image",
+   "aspect": "4:5",
+   "title": "Working portrait 3 (sewing)",
+   "shoot": "Same series as E1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "E4",
+   "section": "Factory — people",
+   "type": "image",
+   "aspect": "4:5",
+   "title": "Working portrait 4 (quality)",
+   "shoot": "Same series as E1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "E5",
+   "section": "Factory — people",
+   "type": "image",
+   "aspect": "4:5",
+   "title": "Working portrait 5 (pattern room)",
+   "shoot": "Same series as E1.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "E6",
+   "section": "Factory — people",
+   "type": "image",
+   "aspect": "16:9",
+   "title": "The production hall, wide",
+   "shoot": "Overview of the production area with the team at work, from a high point or the far end of the hall; LED rows and the full line in frame. Alternative: the whole team together in the hall, natural, not posed.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "B1",
+   "section": "Factory — place",
+   "type": "image",
+   "aspect": "4:5",
+   "title": "Facade with the Martı Tekstil sign",
+   "shoot": "Straight on, morning light, gate open.",
+   "ref": "img/ref/ref-02-facade-sign.jpg",
+   "reshoot": "Usable as is after colour grading; consider a version with the gate fully open."
+  },
+  {
+   "id": "B2",
+   "section": "Factory — place",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Bergama",
+   "shoot": "One frame of the town or the road in; morning.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "B3",
+   "section": "Factory — place",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "The building at sunset, tight",
+   "shoot": "Blue wall, salmon trim, warm light.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "B4",
+   "section": "Factory — Manchester",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Manchester office or street",
+   "shoot": "To be taken in Manchester; building entrance or a recognisable street.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "N1",
+   "section": "Factory — still life",
+   "type": "image",
+   "aspect": "3:2",
+   "title": "Tools, top-down",
+   "shoot": "Shears, tape, chalk, pattern weights, our marker paper; one light direction; 3–5 objects.",
+   "ref": null,
+   "reshoot": null
+  },
+  {
+   "id": "G1",
+   "section": "Contact — map",
+   "type": "image",
+   "aspect": "16:9",
+   "title": "Map: İzmir plant and Manchester office",
+   "shoot": "Not a photo: a simple two-point map to be drawn (or an embedded map) once the domain and addresses are final.",
+   "ref": null,
+   "reshoot": null
+  }
+ ]
+}

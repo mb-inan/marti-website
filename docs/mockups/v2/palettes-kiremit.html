@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Palette selection — Kiremit family</title>
+<base href="../../../">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  body { background: #fff; color: #222; padding: 40px; font-size: 14px; }
+  h1 { font-stretch: 100%; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 22px; margin-bottom: 6px; }
+  .intro { color: #666; margin-bottom: 28px; max-width: 80ch; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .tile { border: 1px solid #e5e5e5; border-radius: 6px; overflow: hidden; }
+  .tile .name { padding: 12px 16px; font-weight: 600; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: baseline; }
+  .tile .name span { font-weight: 400; color: #777; font-size: 12px; }
+  .demo { background: var(--g); padding: 0; }
+  .demo .rail { padding: 16px 18px 10px; }
+  .demo .wm { font-weight: 700; letter-spacing: .16em; font-stretch: 125%; font-variation-settings: "wdth" 125; font-size: 15px; color: var(--a); }
+  .demo .wm.ink { color: var(--i); }
+  .demo .desc { font-size: 10px; color: var(--m); margin-top: 3px; }
+  .demo .hz { height: 110px; background: linear-gradient(180deg, color-mix(in srgb, var(--d) 40%, #6b5a52) 0%, var(--d) 100%); color: #fff; padding: 16px 18px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .demo .hz b { font-stretch: 75%; font-variation-settings: "wdth" 75; font-weight: 600; font-size: 24px; line-height: 1; letter-spacing: -.01em; display: block; }
+  .demo .hz small { font-size: 10px; opacity: .85; margin-top: 6px; }
+  .demo .facts { padding: 14px 18px; border-bottom: 1px solid var(--l); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .demo .facts .k { font-size: 9px; color: var(--m); }
+  .demo .facts .v { font-stretch: 75%; font-variation-settings: "wdth" 75; font-weight: 600; font-size: 18px; color: var(--i); line-height: 1.1; }
+  .demo .body { padding: 14px 18px 18px; }
+  .demo .body h3 { font-size: 15px; color: var(--i); font-weight: 600; margin-bottom: 6px; font-stretch: 90%; font-variation-settings: "wdth" 90; }
+  .demo .body p { font-size: 11px; color: var(--t); line-height: 1.5; margin: 0 0 10px; }
+  .demo .body a { font-size: 11px; color: var(--a); text-decoration: none; border-bottom: 1px solid var(--a); }
+  .demo .btn { display: inline-block; font-size: 11px; background: var(--a); color: #fff; padding: 6px 10px; border-radius: 3px; margin-left: 10px; }
+  .swatches { display: flex; }
+  .swatches div { flex: 1; height: 26px; }
+  .legend { display: grid; grid-template-columns: repeat(5, 1fr); font-size: 9px; color: #777; padding: 6px 10px 10px; gap: 4px; }
+  .legend code { display: block; color: #333; }
+</style>
+</head>
+<body>
+<h1>Palette selection — Kiremit family, warmer and more vibrant</h1>
+<p class="intro">Same base as the chosen mockup (warm linen ground, red-brown ink). What changes between the four is the dark band and the accent used for the wordmark, links and the button. The wordmark is shown in the accent; the small "MARTI" in the facts area shows it in the ink instead, so both options are visible.</p>
+<div class="grid">
+
+  <div class="tile" style="--g:#F4EFE8; --i:#5A3A2E; --t:#3A302B; --m:#7A6A5F; --l:#D9CCBF; --d:#3B2520; --a:#5A3A2E">
+    <div class="name">K1 Kiremit <span>as mocked up</span></div>
+    <div class="demo">
+      <div class="rail"><div class="wm">MARTI</div><div class="desc">Womenswear manufacturing.</div></div>
+      <div class="hz"><b>The shirt, the blouse, the dress.</b><small>Thirty years of woven womenswear.</small></div>
+      <div class="facts"><div><div class="k">Experience</div><div class="v">30 years</div></div><div><div class="k">Capacity</div><div class="v">~30,000</div></div></div>
+      <div class="body"><h3>Audited, year after year</h3><p>Sedex member since 2023. Certificates and detailed information on request.</p><a href="#">Request details</a><span class="btn">Start a conversation</span></div>
+      <div class="swatches"><div style="background:#F4EFE8"></div><div style="background:#5A3A2E"></div><div style="background:#3B2520"></div><div style="background:#5A3A2E"></div><div style="background:#D9CCBF"></div></div>
+      <div class="legend"><span>ground<code>#F4EFE8</code></span><span>ink<code>#5A3A2E</code></span><span>band<code>#3B2520</code></span><span>accent<code>#5A3A2E</code></span><span>line<code>#D9CCBF</code></span></div>
+    </div>
+  </div>
+
+  <div class="tile" style="--g:#F5EFE7; --i:#4A2E24; --t:#3A302B; --m:#7A6A5F; --l:#DCCFC2; --d:#8E4A3A; --a:#C9573A">
+    <div class="name">K2 Terracotta <span>band = the floor</span></div>
+    <div class="demo">
+      <div class="rail"><div class="wm">MARTI</div><div class="desc">Womenswear manufacturing.</div></div>
+      <div class="hz"><b>The shirt, the blouse, the dress.</b><small>Thirty years of woven womenswear.</small></div>
+      <div class="facts"><div><div class="k">Experience</div><div class="v">30 years</div></div><div><div class="k">Capacity</div><div class="v">~30,000</div></div></div>
+      <div class="body"><h3>Audited, year after year</h3><p>Sedex member since 2023. Certificates and detailed information on request.</p><a href="#">Request details</a><span class="btn">Start a conversation</span></div>
+      <div class="swatches"><div style="background:#F5EFE7"></div><div style="background:#4A2E24"></div><div style="background:#8E4A3A"></div><div style="background:#C9573A"></div><div style="background:#DCCFC2"></div></div>
+      <div class="legend"><span>ground<code>#F5EFE7</code></span><span>ink<code>#4A2E24</code></span><span>band<code>#8E4A3A</code></span><span>accent<code>#C9573A</code></span><span>line<code>#DCCFC2</code></span></div>
+    </div>
+  </div>
+
+  <div class="tile" style="--g:#F7F1E8; --i:#3E2A22; --t:#3A302B; --m:#7A6A5F; --l:#DFD2C4; --d:#4A2E24; --a:#E0702F">
+    <div class="name">K3 Burnt orange <span>dark band, bright accent</span></div>
+    <div class="demo">
+      <div class="rail"><div class="wm">MARTI</div><div class="desc">Womenswear manufacturing.</div></div>
+      <div class="hz"><b>The shirt, the blouse, the dress.</b><small>Thirty years of woven womenswear.</small></div>
+      <div class="facts"><div><div class="k">Experience</div><div class="v">30 years</div></div><div><div class="k">Capacity</div><div class="v">~30,000</div></div></div>
+      <div class="body"><h3>Audited, year after year</h3><p>Sedex member since 2023. Certificates and detailed information on request.</p><a href="#">Request details</a><span class="btn">Start a conversation</span></div>
+      <div class="swatches"><div style="background:#F7F1E8"></div><div style="background:#3E2A22"></div><div style="background:#4A2E24"></div><div style="background:#E0702F"></div><div style="background:#DFD2C4"></div></div>
+      <div class="legend"><span>ground<code>#F7F1E8</code></span><span>ink<code>#3E2A22</code></span><span>band<code>#4A2E24</code></span><span>accent<code>#E0702F</code></span><span>line<code>#DFD2C4</code></span></div>
+    </div>
+  </div>
+
+  <div class="tile" style="--g:#F4EFE8; --i:#3A3331; --t:#3A302B; --m:#7A6A5F; --l:#D9CCBF; --d:#5C3D2E; --a:#E8923A">
+    <div class="name">K4 Amber <span>warm charcoal ink, amber accent</span></div>
+    <div class="demo">
+      <div class="rail"><div class="wm">MARTI</div><div class="desc">Womenswear manufacturing.</div></div>
+      <div class="hz"><b>The shirt, the blouse, the dress.</b><small>Thirty years of woven womenswear.</small></div>
+      <div class="facts"><div><div class="k">Experience</div><div class="v">30 years</div></div><div><div class="k">Capacity</div><div class="v">~30,000</div></div></div>
+      <div class="body"><h3>Audited, year after year</h3><p>Sedex member since 2023. Certificates and detailed information on request.</p><a href="#">Request details</a><span class="btn">Start a conversation</span></div>
+      <div class="swatches"><div style="background:#F4EFE8"></div><div style="background:#3A3331"></div><div style="background:#5C3D2E"></div><div style="background:#E8923A"></div><div style="background:#D9CCBF"></div></div>
+      <div class="legend"><span>ground<code>#F4EFE8</code></span><span>ink<code>#3A3331</code></span><span>band<code>#5C3D2E</code></span><span>accent<code>#E8923A</code></span><span>line<code>#D9CCBF</code></span></div>
+    </div>
+  </div>
+
+</div>
+
+<p class="intro" style="margin-top:28px">Wordmark colour, in each accent and in the ink, at the size it appears in the rail:</p>
+<div style="display:flex; gap:48px; align-items:center; flex-wrap:wrap; font-weight:700; letter-spacing:.16em; font-stretch:125%; font-variation-settings:'wdth' 125; font-size:22px">
+  <span style="color:#5A3A2E">MARTI <small style="font-size:10px;letter-spacing:0;font-weight:400;color:#777">K1 ink</small></span>
+  <span style="color:#C9573A">MARTI <small style="font-size:10px;letter-spacing:0;font-weight:400;color:#777">K2 terracotta</small></span>
+  <span style="color:#E0702F">MARTI <small style="font-size:10px;letter-spacing:0;font-weight:400;color:#777">K3 burnt orange</small></span>
+  <span style="color:#E8923A">MARTI <small style="font-size:10px;letter-spacing:0;font-weight:400;color:#777">K4 amber</small></span>
+  <span style="color:#3A3331">MARTI <small style="font-size:10px;letter-spacing:0;font-weight:400;color:#777">charcoal</small></span>
+</div>
+</body>
+</html>

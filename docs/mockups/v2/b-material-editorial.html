@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mockup B — Material editorial — MARTI</title>
+  <base href="../../../">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ===== Direction B: Material editorial (Dinesen / Manteco register) ===== */
+    body { background: #FBFBF9; }
+    h1, h2 { font-stretch: 100%; font-variation-settings: "wdth" 100; font-weight: 300; letter-spacing: -0.02em; line-height: 1.02; }
+    h1 { font-size: clamp(2.8rem, 6.2vw, 5.4rem); }
+    h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
+    h3 { font-weight: 400; font-stretch: 100%; font-variation-settings: "wdth" 100; }
+    .nav a { font-size: .86rem; }
+    .section { padding-block: clamp(96px, 12vw, 180px); }
+    .section + .section { padding-top: 0; }
+    .band { background: transparent; }
+
+    /* hero: film inset in a frame, words on white beneath */
+    .hero-b { padding-top: 76px; }
+    .hero-b .frame { margin: 20px 5vw 0; height: min(50vh, 520px); overflow: hidden; background: #0C1A3D; }
+    .hero-b .frame video { width: 100%; height: 100%; object-fit: cover; opacity: .9; }
+    .hero-b .words { display: grid; grid-template-columns: 7fr 5fr; gap: 48px; align-items: end; padding: clamp(32px, 4vw, 56px) 0 0; }
+    .hero-b .words p { margin: 0 0 6px; max-width: 34ch; font-size: 1.1rem; line-height: 1.5; color: var(--navy-text); }
+    .hero-b .words small { display: block; margin-top: 18px; color: var(--muted); font-size: .86rem; }
+    @media (max-width: 900px) { .hero-b .words { grid-template-columns: 1fr; } }
+
+    /* spec sheet as a ruled index on white */
+    .index { border-top: 1px solid var(--navy); margin-top: clamp(56px, 7vw, 96px); }
+    .index > div { display: grid; grid-template-columns: 3fr 9fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--blue-line); align-items: baseline; }
+    .index .k { font-size: .86rem; color: var(--muted); }
+    .index .v { font-weight: 300; font-size: clamp(1.4rem, 2.2vw, 2rem); letter-spacing: -0.01em; color: var(--navy); }
+    .index .v small { font-size: .95rem; font-weight: 400; color: var(--muted); margin-left: 14px; }
+
+    /* no cards */
+    .models { border: 0; border-radius: 0; background: transparent; }
+    .models > div { padding: 0 48px 0 0; }
+    .models > div + div { border-left: 1px solid var(--blue-line); padding-left: 48px; }
+    .models dl { font-size: .95rem; }
+
+    /* asymmetric pairs for services */
+    .pairs .pair { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(32px, 5vw, 80px); align-items: end; margin-bottom: clamp(64px, 8vw, 120px); }
+    .pairs .pair:nth-child(even) { grid-template-columns: 5fr 7fr; }
+    .pairs .pair:nth-child(even) figure { order: 2; }
+    .pairs .pair figcaption { margin-top: 12px; }
+    .pairs .pair h3 { margin-bottom: 10px; }
+    .pairs .pair p { max-width: 36ch; }
+    @media (max-width: 900px) { .pairs .pair, .pairs .pair:nth-child(even) { grid-template-columns: 1fr; } .pairs .pair:nth-child(even) figure { order: 0; } }
+
+    /* compliance and people on white, not navy */
+    .quiet { border-top: 1px solid var(--blue-line); padding-top: clamp(48px, 6vw, 80px); }
+    .section-head { align-items: start; }
+
+    /* the one flourish: vertical rail */
+    .rail { position: fixed; right: 18px; top: 50%; transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl; font-size: .72rem; letter-spacing: .08em; color: var(--muted); z-index: 40; }
+    @media (max-width: 900px) { .rail { display: none; } }
+
+    /* links as text, not buttons, in the body */
+    .textlink { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--blue-line); padding-bottom: 2px; font-size: .95rem; }
+    .textlink:hover { border-bottom-color: var(--navy); }
+
+    /* page-load moment */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-b .frame { animation: fadein 1.2s ease both; }
+      .hero-b .words { animation: rise .9s .3s ease both; }
+      @keyframes fadein { from { opacity: 0 } to { opacity: 1 } }
+      @keyframes rise { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+    }
+      .review-bar { display: none !important; }
+  </style>
+</head>
+<body class="page-light">
+<span class="rail" aria-hidden="true">Bergama, İzmir · Manchester</span>
+
+<main id="main">
+
+  <section class="hero-b">
+    <div class="frame" aria-hidden="true">
+      <video autoplay muted loop playsinline poster="assets/img/ph/H2.jpg"><source src="assets/video/ref-v3-dummy-dress.mp4" type="video/mp4"></video>
+    </div>
+    <div class="wrap">
+      <div class="words">
+        <h1>The shirt, the blouse, the dress.</h1>
+        <div>
+          <p>Thirty years of woven womenswear for brands across the United Kingdom and Europe.</p>
+          <small>Production in Bergama, İzmir. Commercial office in Manchester.</small>
+        </div>
+      </div>
+
+      <div class="index" aria-label="Key facts">
+        <div><span class="k">Experience</span><span class="v">30 years<small>woven womenswear</small></span></div>
+        <div><span class="k">Capacity</span><span class="v">About 30,000 pieces a month<small>by model</small></span></div>
+        <div><span class="k">Minimum</span><span class="v">1,000 per style<small>500 per colour</small></span></div>
+        <div><span class="k">Core product</span><span class="v">Shirts, blouses, dresses<small>other womenswear case by case</small></span></div>
+        <div><span class="k">Compliance</span><span class="v">Sedex since 2023<small>audited by <mark class="ph">[two European fashion groups]</mark></small></span></div>
+        <div><span class="k">Delivery</span><span class="v">UK and Europe, 7–10 days<small>by road, hanging or boxed</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we make</h2>
+        <p class="lede">Woven womenswear is our core: shirts, blouses and dresses, from poplin and viscose to crepe, satin and linen. Other womenswear categories are developed with you case by case.</p>
+      </div>
+      <div class="products">
+        <figure><div class="fig r-1x1"><img src="assets/img/ph/P1.jpg" alt="" loading="lazy"></div><figcaption>Shirts</figcaption></figure>
+        <figure><div class="fig r-1x1"><img src="assets/img/ph/P2.jpg" alt="" loading="lazy"></div><figcaption>Blouses</figcaption></figure>
+        <figure><div class="fig r-1x1"><img src="assets/img/ph/P3.jpg" alt="" loading="lazy"></div><figcaption>Dresses</figcaption></figure>
+        <figure><div class="fig r-1x1"><img src="assets/img/ph/P4.jpg" alt="" loading="lazy"></div><figcaption>Skirts</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Two ways to work with us</h2>
+        <p class="lede">Most brands start with the first and move to the second as the relationship settles. Both run on the same team, the same line and the same quality control.</p>
+      </div>
+      <div class="models">
+        <div>
+          <h3>Cut, make and trim</h3>
+          <p>You supply fabric and trims, or have them delivered to us from your nominated mill. We prepare the pattern and samples, cut, sew, finish, pack and ship.</p>
+          <dl><dt>You bring</dt><dd>Tech pack, pattern or sample, fabric</dd><dt>We add</dt><dd>Pattern, grading, marker, samples, production, inspection, packing</dd><dt>Minimum</dt><dd>1,000 pieces per style, 500 per colour</dd></dl>
+        </div>
+        <div>
+          <h3>Nominated fabric</h3>
+          <p>You choose the mill; we place and manage the fabric order with Turkish mills we know, so one partner is responsible for the garment from fabric to delivery.</p>
+          <dl><dt>You bring</dt><dd>Tech pack, fabric choice, approvals</dd><dt>We add</dt><dd>Fabric purchase and handling, pattern, samples, production</dd><dt>Minimum</dt><dd>1,000 pieces per style, 500 per colour</dd></dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>From tech pack to trailer</h2>
+        <p class="lede">One team takes a style from your tech pack to a finished, packed garment ready for the road: pattern and samples, cutting, a sewing line specialised in wovens, finishing and dispatch, under one roof in İzmir.</p>
+      </div>
+      <div class="pairs">
+        <div class="pair">
+          <figure><div class="fig r-3x2"><img src="assets/img/ph/D3.jpg" alt="" loading="lazy"></div></figure>
+          <div><h3>Development</h3><p>Pattern, grading, marker and samples prepared from your tech pack. Samples within 5–7 working days from fabric in hand.</p></div>
+        </div>
+        <div class="pair">
+          <figure><div class="fig r-3x2"><img src="assets/img/ph/C2.jpg" alt="" loading="lazy"></div></figure>
+          <div><h3>Cutting</h3><p>Spreading, marker, straight and band knife, fusing. Fabric relaxed and shade-sorted as it requires.</p></div>
+        </div>
+        <div class="pair">
+          <figure><div class="fig r-3x2"><img src="assets/img/ph/M1.jpg" alt="" loading="lazy"></div></figure>
+          <div><h3>Sewing</h3><p>A line specialised in shirts, blouses and dresses, equipped for the wider womenswear range.</p></div>
+        </div>
+        <div class="pair">
+          <figure><div class="fig r-3x2"><img src="assets/img/ph/F3.jpg" alt="" loading="lazy"></div></figure>
+          <div><h3>Finishing and dispatch</h3><p>Pressing, inspection, bagging; hanging or boxed, loaded for the road. The United Kingdom and Europe within 7–10 days.</p><p><a class="textlink" href="#">Full capabilities</a></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap quiet grid g-5-7">
+      <div>
+        <h2>Audited, year after year</h2>
+        <p class="lede mt-2">Sedex member since 2023. Audited regularly by <mark class="ph">[two major European fashion groups]</mark>, including on ethical and social standards.</p>
+        <p><a class="textlink" href="#">Request certificates and details</a></p>
+      </div>
+      <figure><div class="fig r-3x2"><img src="assets/img/ph/F2.jpg" alt="" loading="lazy"></div></figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap quiet grid g-7-5">
+      <figure><div class="fig r-3x2"><img src="assets/img/ph/B1.jpg" alt="" loading="lazy"></div></figure>
+      <div>
+        <h2>One team, thirty years</h2>
+        <p class="lede mt-2">The factory in Bergama, İzmir, has made woven womenswear for European retailers for thirty years, with a compact team that has grown up together on the line. Our commercial office in Manchester works in step with the factory floor.</p>
+        <p><a class="textlink" href="#">The factory</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap quiet">
+      <h2>Have a style in mind?</h2>
+      <p class="lede mt-2">Send a tech pack or a reference, your quantities and your target date. A costing and a sampling plan within three working days.</p>
+      <p><a class="textlink" href="#">Start a conversation</a></p>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

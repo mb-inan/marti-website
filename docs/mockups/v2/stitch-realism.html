@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stitch realism — three renderings</title>
+<style>
+  @font-face { font-family: "Archivo"; src: url("../../../assets/fonts/archivo-variable.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
+  :root { --ground:#F5EFE7; --paper:#FBF8F3; --ink:#4A2E24; --text:#3A302B; --muted:#7A6A5F; --line:#DCCFC2; --accent:#C9573A; --rail-bg:#F5EFE7; }
+  html,body { margin:0; background:#EDE4D9; color:var(--text); font: 15px/1.5 "Archivo", system-ui, sans-serif; }
+  .sheet { padding: 36px 40px 60px; }
+  h1 { font-weight: 500; font-size: 22px; margin: 0 0 4px; color: var(--ink); }
+  .sub { color: var(--muted); margin: 0 0 28px; max-width: 70ch; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .card { background: var(--paper); border-radius: 8px; padding: 20px 20px 22px; box-shadow: 0 1px 0 rgba(74,46,36,.06); }
+  .card h2 { font-size: 15px; font-weight: 600; margin: 0 0 2px; letter-spacing: .02em; color: var(--ink); }
+  .card h2 span { display:inline-block; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 12px; text-align:center; line-height: 22px; margin-right: 8px; }
+  .card p { margin: 0 0 16px; color: var(--muted); font-size: 13.5px; }
+  .row { display: grid; grid-template-columns: 170px 1fr; gap: 18px; align-items: start; }
+  .lbl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+
+  /* a slice of rail + page, 1:1 */
+  .slice { position: relative; height: 420px; background: var(--ground); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+  .slice .rail { position:absolute; left:0; top:0; bottom:0; width: 70px; background: var(--rail-bg); }
+  .slice .page { position:absolute; left:70px; top:0; right:0; bottom:0; background: var(--ground); }
+  .slice .page i { display:block; height: 8px; margin: 26px 18px 0 22px; background: #E3D8CB; border-radius: 4px; }
+  .slice .page i:nth-child(2n) { width: 55%; }
+  .mag { position: relative; height: 420px; background: var(--ground); border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+  .mag > .zoom { position:absolute; left: -195px; top: -898px; width: 170px; height: 420px; transform: scale(4); transform-origin: top left; }
+  .mag > .zoom .slice { border: 0; border-radius: 0; }
+
+  /* ---- shared seam geometry: 16px wide, centred on the rail edge ---- */
+  .seam { position:absolute; top:0; bottom:0; left: calc(70px - 8px); width: 16px; --sewn: .66; }
+  .seam .sewn { position:absolute; left:0; right:0; top:0; height: calc(var(--sewn) * 100%); }
+  .seam .open { position:absolute; left:0; right:0; top: calc(var(--sewn) * 100%); bottom:0; }
+  /* fabric pucker: the ground pulls very slightly toward the seam */
+  .seam::before { content:""; position:absolute; inset:0 4px; background: linear-gradient(to right, rgba(74,46,36,0), rgba(74,46,36,.05) 40%, rgba(74,46,36,.05) 60%, rgba(74,46,36,0)); }
+
+  /* ================= A. Topstitch (lockstitch) ================= */
+  /* Each stitch is a short rounded cylinder of thread lying on the cloth: lit from the upper left, a dark edge on the right,
+     a soft shadow under it, and a needle hole (a small dent) at each end. */
+  .A .sewn { background:
+      url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='16' height='15' viewBox='0 0 16 15'>\
+<defs>\
+<linearGradient id='t' x1='0' x2='1' y1='0' y2='0'><stop offset='0' stop-color='%23A8452C'/><stop offset='.28' stop-color='%23E68B6E'/><stop offset='.5' stop-color='%23CF5E40'/><stop offset='.8' stop-color='%23A2412A'/><stop offset='1' stop-color='%236E2A1A'/></linearGradient>\
+<linearGradient id='v' x1='0' x2='0' y1='0' y2='1'><stop offset='0' stop-color='%23000' stop-opacity='.28'/><stop offset='.18' stop-color='%23000' stop-opacity='0'/><stop offset='.82' stop-color='%23000' stop-opacity='0'/><stop offset='1' stop-color='%23000' stop-opacity='.28'/></linearGradient>\
+<radialGradient id='h' cx='.5' cy='.5' r='.5'><stop offset='0' stop-color='%23241109' stop-opacity='.55'/><stop offset='.6' stop-color='%23241109' stop-opacity='.18'/><stop offset='1' stop-color='%23241109' stop-opacity='0'/></radialGradient>\
+<filter id='s' x='-50%' y='-20%' width='200%' height='140%'><feGaussianBlur stdDeviation='.6'/></filter>\
+</defs>\
+<ellipse cx='8' cy='14.2' rx='2.1' ry='1.1' fill='url(%23h)'/>\
+<rect x='6.9' y='1.5' width='3.4' height='12.6' rx='1.5' fill='%23241109' opacity='.26' filter='url(%23s)'/>\
+<rect x='6.3' y='.7' width='3.4' height='12.8' rx='1.5' fill='url(%23t)'/>\
+<rect x='6.3' y='.7' width='3.4' height='12.8' rx='1.5' fill='url(%23v)'/>\
+<rect x='7.1' y='1.8' width='.7' height='10' rx='.35' fill='%23fff' opacity='.30'/>\
+</svg>") repeat-y 0 0 / 16px 15px; }
+  .A .open { background:
+      url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='16' height='13' viewBox='0 0 16 13'>\
+<defs><radialGradient id='h' cx='.5' cy='.5' r='.5'><stop offset='0' stop-color='%23241109' stop-opacity='.5'/><stop offset='.55' stop-color='%23241109' stop-opacity='.16'/><stop offset='1' stop-color='%23241109' stop-opacity='0'/></radialGradient></defs>\
+<ellipse cx='8' cy='12.3' rx='2.2' ry='1.2' fill='url(%23h)'/>\
+<ellipse cx='8' cy='12.1' rx='1' ry='.5' fill='%23fff' opacity='.35'/>\
+</svg>") repeat-y 0 0 / 16px 15px; }
+  .A .open::after { content:""; position:absolute; left: 8px; right: -12px; top:0; bottom:0; background: linear-gradient(to right, rgba(59,37,32,.16), rgba(59,37,32,0)); }
+
+  /* ================= B. Corded (twisted two-ply cord) ================= */
+  /* A continuous cord, like piping or a cording stitch: a cylinder with a helical twist, lying in a slight channel.
+     Where it is not yet laid, the empty channel shows with its needle holes. */
+  .B .sewn::before { content:""; position:absolute; left:5px; width: 6px; top:0; bottom:0; border-radius: 4px; background: rgba(36,17,9,.28); filter: blur(1px); transform: translate(1px, 1px); }
+  .B .sewn::after { content:""; position:absolute; left:5px; width: 6px; top:0; bottom:0; border-radius: 3px;
+      background:
+        repeating-linear-gradient(-42deg, rgba(255,255,255,0) 0, rgba(255,255,255,.26) 1px, rgba(255,255,255,0) 2.2px, rgba(40,15,8,0) 3px, rgba(40,15,8,.26) 3.9px, rgba(40,15,8,0) 5px),
+        linear-gradient(to right, #A8452C 0, #E68B6E 28%, #CF5E40 50%, #A2412A 80%, #6E2A1A 100%);
+      box-shadow: inset 0 0 0 .4px rgba(60,20,10,.35); }
+  .B .open { background:
+      url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'>\
+<defs><radialGradient id='h' cx='.5' cy='.5' r='.5'><stop offset='0' stop-color='%23241109' stop-opacity='.5'/><stop offset='.55' stop-color='%23241109' stop-opacity='.16'/><stop offset='1' stop-color='%23241109' stop-opacity='0'/></radialGradient></defs>\
+<ellipse cx='8' cy='6' rx='2.2' ry='1.3' fill='url(%23h)'/></svg>") repeat-y 0 0 / 16px 12px; }
+  .B .open::before { content:""; position:absolute; left:5px; width: 6px; top:0; bottom:0; border-radius: 3px; background: linear-gradient(to right, rgba(74,46,36,.10), rgba(74,46,36,.02) 50%, rgba(74,46,36,.08)); }
+  .B .open::after { content:""; position:absolute; left: 8px; right: -12px; top:0; bottom:0; background: linear-gradient(to right, rgba(59,37,32,.16), rgba(59,37,32,0)); }
+
+  /* ================= C. Saddle stitch (hand-sewn, waxed thread) ================= */
+  /* Longer stitches, slightly slanted as a hand needle leaves them, a heavier waxed thread with a dull sheen,
+     bigger holes, a touch of irregularity. */
+  .C .sewn { background:
+      url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='16' height='38' viewBox='0 0 16 38'>\
+<defs>\
+<linearGradient id='t' x1='0' x2='1' y1='0' y2='0'><stop offset='0' stop-color='%239E3F28'/><stop offset='.3' stop-color='%23DD826A'/><stop offset='.55' stop-color='%23C75A3F'/><stop offset='1' stop-color='%23662617'/></linearGradient>\
+<radialGradient id='h' cx='.5' cy='.5' r='.5'><stop offset='0' stop-color='%23241109' stop-opacity='.6'/><stop offset='.55' stop-color='%23241109' stop-opacity='.2'/><stop offset='1' stop-color='%23241109' stop-opacity='0'/></radialGradient>\
+<filter id='s' x='-50%' y='-20%' width='200%' height='140%'><feGaussianBlur stdDeviation='.7'/></filter>\
+</defs>\
+<ellipse cx='7.6' cy='17.5' rx='2.8' ry='1.6' fill='url(%23h)'/><ellipse cx='8.4' cy='36.5' rx='2.8' ry='1.6' fill='url(%23h)'/>\
+<g transform='rotate(-4 8 9)'><rect x='6.9' y='1.6' width='4' height='15.6' rx='1.8' fill='%23241109' opacity='.3' filter='url(%23s)'/><rect x='6' y='.6' width='4' height='15.8' rx='1.8' fill='url(%23t)'/><rect x='7' y='2.2' width='.8' height='12' rx='.4' fill='%23fff' opacity='.22'/></g>\
+<g transform='rotate(-3.2 8 28)'><rect x='6.9' y='20.6' width='4' height='15.6' rx='1.8' fill='%23241109' opacity='.3' filter='url(%23s)'/><rect x='6' y='19.6' width='4' height='15.8' rx='1.8' fill='url(%23t)'/><rect x='7' y='21.2' width='.8' height='12' rx='.4' fill='%23fff' opacity='.22'/></g>\
+</svg>") repeat-y 0 0 / 16px 38px; }
+  .C .open { background:
+      url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='16' height='19' viewBox='0 0 16 19'>\
+<defs><radialGradient id='h' cx='.5' cy='.5' r='.5'><stop offset='0' stop-color='%23241109' stop-opacity='.55'/><stop offset='.55' stop-color='%23241109' stop-opacity='.18'/><stop offset='1' stop-color='%23241109' stop-opacity='0'/></radialGradient></defs>\
+<ellipse cx='8' cy='17.5' rx='2.6' ry='1.5' fill='url(%23h)'/><ellipse cx='8' cy='17.2' rx='1.1' ry='.55' fill='%23fff' opacity='.35'/></svg>") repeat-y 0 0 / 16px 19px; }
+  .C .open::after { content:""; position:absolute; left: 8px; right: -12px; top:0; bottom:0; background: linear-gradient(to right, rgba(59,37,32,.16), rgba(59,37,32,0)); }
+
+  .note { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 80ch; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>The seam, rendered as thread</h1>
+  <p class="sub">The v0.5 seam was a flat dashed line, which is why it read as “broken lines”. These three render the thread as a lit cylinder with a shadow and needle holes. Left: actual size against a slice of rail and page. Right: the same at 4×. Sewn two thirds, open below, as on the site.</p>
+  <div class="grid">
+
+    <div class="card A">
+      <h2><span>A</span>Topstitch</h2>
+      <p>Machine lockstitch, about 12 px stitch, 2 px gap. Each stitch dips into a needle hole at both ends. The quietest of the three; closest to what you see on a shirt placket.</p>
+      <div class="row">
+        <div><p class="lbl">Actual size</p>
+          <div class="slice"><div class="rail"></div><div class="page"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="seam"><div class="sewn"></div><div class="open"></div></div></div></div>
+        <div><p class="lbl">4× — where sewn meets open</p>
+          <div class="mag"><div class="zoom"><div class="slice"><div class="rail"></div><div class="page"></div><div class="seam"><div class="sewn"></div><div class="open"></div></div></div></div></div></div>
+      </div>
+    </div>
+
+    <div class="card B">
+      <h2><span>B</span>Corded</h2>
+      <p>A continuous twisted cord laid in a shallow channel, like piping or a cording stitch. Reads as a rope of thread; most visible of the three. Where not yet laid, the empty channel and its holes show.</p>
+      <div class="row">
+        <div><p class="lbl">Actual size</p>
+          <div class="slice"><div class="rail"></div><div class="page"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="seam"><div class="sewn"></div><div class="open"></div></div></div></div>
+        <div><p class="lbl">4× — where sewn meets open</p>
+          <div class="mag"><div class="zoom"><div class="slice"><div class="rail"></div><div class="page"></div><div class="seam"><div class="sewn"></div><div class="open"></div></div></div></div></div></div>
+      </div>
+    </div>
+
+    <div class="card C">
+      <h2><span>C</span>Saddle stitch</h2>
+      <p>Hand-sewn look: longer stitches, a heavier waxed thread, slight slant and irregularity, bigger holes. Warmer and more “atelier”; a touch less industrial than the factory is.</p>
+      <div class="row">
+        <div><p class="lbl">Actual size</p>
+          <div class="slice"><div class="rail"></div><div class="page"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="seam"><div class="sewn"></div><div class="open"></div></div></div></div>
+        <div><p class="lbl">4× — where sewn meets open</p>
+          <div class="mag"><div class="zoom"><div class="slice"><div class="rail"></div><div class="page"></div><div class="seam"><div class="sewn"></div><div class="open"></div></div></div></div></div></div>
+      </div>
+    </div>
+
+  </div>
+  <p class="note">All three keep the v0.5 behaviour (sewn length follows the scroll, rips on page change, resews). Thread colour is the clay accent with a lit side and a shaded side; holes are small dents in the linen. The seam becomes 16 px wide (was 12) so the thread can have a body.</p>
+</div>
+</body>
+</html>
