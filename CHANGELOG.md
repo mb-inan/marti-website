@@ -14,6 +14,15 @@ Screenshots: docs/screenshots/vX.Y/
 
 ---
 
+## v0.7.1 — 2026-10-23 — seam proportion and a slow sew-in
+
+Changed (after the first look at the live site, mb-inan.github.io/marti-website):
+- Sewn length now follows the scroll in proportion: two fifths of the seam at the top of the page, growing linearly to fully sewn at the bottom (was: two thirds, barely moving, then closing with a jump at the very bottom).
+- Page open and page change: the thread is sewn in slowly to the two-fifths point over about 1.9 s with an ease-out, instead of snapping there; from then on the proportional rule applies. Constants `SEWN_AT_TOP` and `INTRO_MS` at the top of the `Seam` module.
+- Same behaviour on desktop (vertical) and phone (horizontal).
+
+Open: a real-phone check of the proportional sewing with momentum scrolling.
+
 ## v0.7 — 2026-10-23 — the seam on phones, and the live end settled
 
 Changed:

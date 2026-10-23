@@ -1,6 +1,8 @@
 # HANDOVER — MARTI website
 
-Last updated: 2026-10-23, v0.7 (seam on phones as a horizontal stitch under the top bar; desktop live end sways gently at rest; phone live end is a taut lead). Approved by Burkay. Roll back by restoring `snapshots/v0.6-2026-10-23/` (or set `SEAM`, `SEAM_MOBILE` or `TRANSITIONS` to false in `assets/js/main.js`). Read this first in any new session, then `CHANGELOG.md`.
+Live at https://mb-inan.github.io/marti-website/ (GitHub repository mb-inan/marti-website, published 23 Oct 2026 via GitHub Desktop from the `website` folder).
+
+Last updated: 2026-10-23, v0.7.1 (seam two fifths at the top, proportional to the scroll, slow sew-in on page open) on v0.7 (seam on phones as a horizontal stitch under the top bar; desktop live end sways gently at rest; phone live end is a taut lead). Approved by Burkay. Roll back by restoring `snapshots/v0.6-2026-10-23/` (or set `SEAM`, `SEAM_MOBILE` or `TRANSITIONS` to false in `assets/js/main.js`). Read this first in any new session, then `CHANGELOG.md`.
 
 ## 1. What this is
 
@@ -12,7 +14,7 @@ Owner of the project: Burkay (Manchester). Factory numbers and production claims
 
 - v0.1 template complete: six pages, placeholder system, documentation, generators.
 - v0.2 applies Burkay's review of 23 Oct (facts, tone, two ways of working, delivery as required, UK and Europe; headcount not published; sampling 5–7 days). 37 placeholders remain, most for the production director.
-- Nothing is published yet. No repository on GitHub yet. No domain yet.
+- Published on GitHub Pages (public repository `mb-inan/marti-website`); address not yet shared beyond Burkay. No domain yet.
 - All photographs are placeholders. Reference photos from 23 Oct 2026 are inside the placeholders, dimmed and labelled, and must not be published: they show a customer's hangers and swing tags.
 - Font: Archivo, self-hosted in `assets/fonts/`.
 - Design: v0.4 = left-rail navigation, palette K2 Terracotta, de-boxed layout (`docs/DESIGN_DIRECTION_v2.md`, decisions #19–#22). Mockups that led to it are in `docs/mockups/v2/`.

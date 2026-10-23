@@ -138,8 +138,8 @@ function reviewBar() {
 function initPage() { heroVideo(); reviewBar(); setCurrentNav(); }
 
 /* ---------- the seam ----------
-   Sewn length (0–1): two thirds at the top of the page, growing to three quarters as you scroll,
-   fully sewn only at the very bottom. On load it is sewn in from zero. */
+   Sewn length (0–1): two fifths at the top of the page, growing in proportion to the scroll,
+   fully sewn at the bottom. On load it is sewn in slowly from zero. */
 /* v0.6: the seam is drawn as thread. Two needle rows (straight stitches) and a looper thread that crosses
    diagonally between them and wraps each row — the underside of a chain / cording stitch. The thread is one
    continuous SVG path revealed along its own length (stroke-dashoffset), so it is sewn stitch by stitch and
@@ -157,11 +157,13 @@ const Seam = (() => {
   let sewn = 0, target = 0, raf = 0, locked = false, label = null;
   let anchorPrev = null, simRaf = 0, calm = 0;
 
+  /* Sewn length follows the scroll in proportion: two fifths at the top of the page, growing linearly to
+     fully sewn at the bottom. */
+  const SEWN_AT_TOP = 0.4;
   function targetFromScroll() {
     const max = document.documentElement.scrollHeight - innerHeight;
     const p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 1;
-    if (p >= 0.985) return 1;
-    return 0.66 + 0.09 * p;
+    return SEWN_AT_TOP + (1 - SEWN_AT_TOP) * p;
   }
 
   /* ---- geometry ---- */
@@ -251,13 +253,24 @@ const Seam = (() => {
     if (label) label.update(sewn);
     wake();
   }
-  function loop() {
+  /* On a page open (and after a page change) the thread is sewn in slowly over INTRO_MS with an ease-out,
+     so the seam comes down to its two-fifths point rather than snapping there; after that it follows the scroll. */
+  const INTRO_MS = 1900;
+  let introT0 = 0, introFrom = 0;
+  function loop(now) {
+    if (introT0) {
+      const k = Math.min(1, (now - introT0) / INTRO_MS), e = 1 - Math.pow(1 - k, 3);
+      sewn = introFrom + (target - introFrom) * e;
+      apply();
+      if (k >= 1) introT0 = 0; else { raf = requestAnimationFrame(loop); return; }
+    }
     const d = target - sewn;
     if (Math.abs(d) < 0.0008) { sewn = target; apply(); raf = 0; return; }
     sewn += d * 0.085;                       /* ease toward the target, like thread catching up */
     apply();
     raf = requestAnimationFrame(loop);
   }
+  function startIntro() { introT0 = performance.now(); introFrom = sewn; }
   function kick() { if (!raf) raf = requestAnimationFrame(loop); }
 
   /* ---- the live end ----
@@ -356,12 +369,13 @@ const Seam = (() => {
     if (!el) return;
     locked = false;
     target = targetFromScroll();
+    startIntro();
     kick();
   }
   /* rip open: quick, with a shake */
   function rip() {
     if (!el) return Promise.resolve();
-    locked = true;
+    locked = true; introT0 = 0;
     cancelAnimationFrame(raf); raf = 0;
     el.classList.add("is-ripping");
     const start = sewn, t0 = performance.now(), dur = 340;
@@ -375,7 +389,7 @@ const Seam = (() => {
       requestAnimationFrame(step);
     });
   }
-  function resewFromZero() { sewn = 0; apply(); locked = false; target = targetFromScroll(); kick(); }
+  function resewFromZero() { sewn = 0; apply(); locked = false; target = targetFromScroll(); startIntro(); kick(); }
   return { mount, sew, rip, resewFromZero, get value() { return sewn; } };
 })();
 
