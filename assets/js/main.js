@@ -12,8 +12,13 @@ const SEAM_MOBILE = true;      /* v0.7: horizontal seam under the top bar on pho
 const SEAM_LABEL = typeof window.MARTI_SEAM_LABEL !== "undefined" ? window.MARTI_SEAM_LABEL : false;
 
 const SITE = {
-  name: "MARTI",
+  name: "MARTI Textile",
   descriptor: "Womenswear manufacturing.",
+  brand: {                                   /* v0.8: the ticket mark from the brand package (assets/brand/BRAND.md) */
+    rail: "assets/brand/marti-ticket.svg",
+    small: "assets/brand/marti-ticket_small-cut.svg",   /* under 100 px wide: heavier cut */
+    dark: "assets/brand/marti-ticket_on-dark.svg",      /* on the footer's dark ground: linen frame, no ground */
+  },
   legal: "Martı Tekstil Ltd. Şti.",
   nav: [
     ["capabilities.html", "Capabilities"],
@@ -41,7 +46,10 @@ function rail() {
   <a class="skip" href="#main">Skip to content</a>
   <aside class="rail" id="site-rail">
     <a class="brand" href="index.html" aria-label="${SITE.name} home">
-      <span class="wordmark">${SITE.name}</span>
+      <picture class="ticket">
+        <source media="(max-width: 1000px)" srcset="${SITE.brand.small}">
+        <img src="${SITE.brand.rail}" alt="${SITE.name}" width="352" height="176">
+      </picture>
       <span class="descriptor">${SITE.descriptor}</span>
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -57,7 +65,7 @@ function footer() {
   <footer class="site-footer">
     <div class="wrap">
       <div>
-        <a class="brand" href="index.html"><span class="wordmark">${SITE.name}</span><span class="descriptor">${SITE.descriptor}</span></a>
+        <a class="brand" href="index.html"><img class="ticket" src="${SITE.brand.dark}" alt="${SITE.name}" width="352" height="176"><span class="descriptor">${SITE.descriptor}</span></a>
         <p class="mt-2 small" style="max-width:38ch;opacity:.8">Thirty years of woven womenswear, made in İzmir, Türkiye, for brands across the United Kingdom and Europe.</p>
       </div>
       <div>
@@ -73,7 +81,7 @@ function footer() {
         <ul>${SITE.nav.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join("")}</ul>
       </div>
       <div class="legal">
-        <span>© ${y} ${SITE.legal}. MARTI is a trading name of <mark class="ph" data-ph="T-tradingname">[legal entity to confirm]</mark>.</span>
+        <span>© ${y} ${SITE.legal} MARTI Textile is a trading name of <mark class="ph" data-ph="T-tradingname">[legal entity to confirm]</mark>.</span>
         <span><a href="#">Privacy</a> &nbsp; <a href="#">Code of conduct</a></span>
       </div>
     </div>

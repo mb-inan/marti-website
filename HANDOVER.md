@@ -2,7 +2,7 @@
 
 Live at https://mb-inan.github.io/marti-website/ (GitHub repository mb-inan/marti-website, published 23 Oct 2026 via GitHub Desktop from the `website` folder).
 
-Last updated: 2026-10-23, v0.7.1 (seam two fifths at the top, proportional to the scroll, slow sew-in on page open) on v0.7 (seam on phones as a horizontal stitch under the top bar; desktop live end sways gently at rest; phone live end is a taut lead). Approved by Burkay. Roll back by restoring `snapshots/v0.6-2026-10-23/` (or set `SEAM`, `SEAM_MOBILE` or `TRANSITIONS` to false in `assets/js/main.js`). Read this first in any new session, then `CHANGELOG.md`.
+Last updated: 2026-10-24, v0.8 (brand package: ticket mark in rail, bar and footer; favicon) on the laptop, awaiting Burkay's acceptance before push; v0.7.1 (seam two fifths at the top, proportional to the scroll, slow sew-in on page open) on v0.7 (seam on phones as a horizontal stitch under the top bar; desktop live end sways gently at rest; phone live end is a taut lead). Approved by Burkay. Roll back by restoring `snapshots/v0.6-2026-10-23/` (or set `SEAM`, `SEAM_MOBILE` or `TRANSITIONS` to false in `assets/js/main.js`). Read this first in any new session, then `CHANGELOG.md`.
 
 ## 1. What this is
 
@@ -16,7 +16,7 @@ Owner of the project: Burkay (Manchester). Factory numbers and production claims
 - v0.2 applies Burkay's review of 23 Oct (facts, tone, two ways of working, delivery as required, UK and Europe; headcount not published; sampling 5–7 days). 37 placeholders remain, most for the production director.
 - Published on GitHub Pages (public repository `mb-inan/marti-website`); address not yet shared beyond Burkay. No domain yet.
 - All photographs are placeholders. Reference photos from 23 Oct 2026 are inside the placeholders, dimmed and labelled, and must not be published: they show a customer's hangers and swing tags.
-- Font: Archivo, self-hosted in `assets/fonts/`.
+- Font: Archivo, self-hosted in `assets/fonts/`. Brand: the ticket mark and rules in `assets/brand/` (`BRAND.md`); the name is MARTI Textile.
 - Design: v0.4 = left-rail navigation, palette K2 Terracotta, de-boxed layout (`docs/DESIGN_DIRECTION_v2.md`, decisions #19–#22). Mockups that led to it are in `docs/mockups/v2/`.
 - Motion: v0.5 added the stitched seam between rail and page and the page transition (rip, drag the old page off to the right, resew). v0.6 redrew the seam as thread (SVG, chain/cording stitch in matte cotton, needle holes; the unsewn part shows only holes) and put a linen texture under the whole page. v0.7 turned the seam horizontal under the top bar on phones (page drops away on a page change), gave the desktop live end a short gently swaying thread, and the phone live end a taut lead. Geometry constants are at the top of the `Seam` module in `assets/js/main.js` (`W, X1, X2, PITCH, STITCH, TAIL_N, TAIL_SEG`); thread colours in `style.css` under `.seam-svg`. The linen ground is `assets/img/linen.webp` from `tools/build_linen.py [strength]`.
 

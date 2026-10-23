@@ -94,7 +94,8 @@ main > .band-fill:last-child { margin-bottom: 32px; }
 
 /* ---------- rail (navigation) ---------- */
 .rail { position: fixed; left: 0; top: 0; bottom: 0; width: var(--rail); padding: 36px 36px; display: flex; flex-direction: column; gap: 36px; background: transparent; z-index: 50; }
-.brand { display: flex; flex-direction: column; text-decoration: none; line-height: 1; gap: 6px; }
+.brand { display: flex; flex-direction: column; text-decoration: none; line-height: 1; gap: 10px; }
+.brand .ticket, .brand .ticket img { display: block; width: 152px; height: auto; }   /* the ticket mark; clear space = half its height */
 .wordmark { font-weight: 700; font-size: 1.15rem; letter-spacing: .16em; font-stretch: 125%; font-variation-settings: "wdth" 125; color: var(--accent); }
 .descriptor { font-size: .72rem; color: var(--muted); }
 .nav { display: flex; flex-direction: column; gap: 10px; }
@@ -107,6 +108,9 @@ main > .band-fill:last-child { margin-bottom: 32px; }
 @media (max-width: 1000px) {
   :root { --rail: 0px; }
   .rail { position: sticky; top: 0; width: auto; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 16px var(--gutter); gap: 12px 24px; box-shadow: 0 1px 0 var(--line); background: var(--ground) var(--linen) center / 360px 360px; }
+  .brand { gap: 0; }
+  .brand .ticket, .brand .ticket img { width: 96px; }
+  .brand .descriptor { display: none; }
   .nav-toggle { display: inline-block; }
   .nav { display: none; flex-basis: 100%; padding: 8px 0 12px; gap: 14px; }
   .nav.is-open { display: flex; }
@@ -247,6 +251,7 @@ figcaption strong { color: var(--ink); }
 /* ---------- footer ---------- */
 .site-footer { background: var(--band-deep); color: rgba(255,255,255,.85); padding-block: clamp(48px, 6vw, 80px) 32px; font-size: .92rem; }
 .site-footer .wrap { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(24px, 4vw, 56px); }
+.site-footer .brand .ticket { width: 168px; }
 .site-footer .wordmark { color: #fff; }
 .site-footer .descriptor { color: rgba(255,255,255,.7); }
 .site-footer h4 { color: #fff; margin-bottom: 12px; font-size: .95rem; }

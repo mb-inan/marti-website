@@ -14,6 +14,18 @@ Screenshots: docs/screenshots/vX.Y/
 
 ---
 
+## v0.8 — 2026-10-24 — the brand package on the site (not yet pushed)
+
+Changed:
+- **Mark.** The ticket from the brand package (`assets/brand/`, masters and rules in `assets/brand/BRAND.md`) replaces the typed wordmark: in the desktop rail at 152 px (full cut), in the phone top bar at 96 px (small cut, heavier frame), in the footer at 168 px on the dark ground (`marti-ticket_on-dark.svg`, derived from `_on-ink` by removing its ground rectangle so it sits on the footer's deep brown). Descriptor "Womenswear manufacturing." stays under the mark on desktop and in the footer; hidden in the phone bar.
+- **Favicon and icons.** `marti-favicon.svg` with a 32 px PNG fallback, Apple touch icon 180 px; `theme-color` linen; `og:image` = horizontal lockup, `og:site_name` MARTI Textile.
+- **Name.** Page titles end "— MARTI Textile"; the legal line reads "MARTI Textile is a trading name of […]". Everything else (rail copy, footer columns) unchanged.
+- Only a subset of the package is in the repository (SVG masters needed by the site, favicon PNGs, lockup PNG for link previews); the full package with PDFs is Burkay's `marti-brand-package.zip`.
+
+Decided: Burkay supplied the brand package (ticket mark, dusty teal plate, terracotta frame) and asked for it to be used where appropriate. Written to the laptop folder only; GitHub untouched until he accepts.
+
+Open: a check of the mark on the live site at normal distance; whether the hero corner note should carry the small ticket.
+
 ## v0.7.1 — 2026-10-23 — seam proportion and a slow sew-in
 
 Changed (after the first look at the live site, mb-inan.github.io/marti-website):
