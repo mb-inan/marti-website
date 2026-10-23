@@ -109,6 +109,23 @@ GitHub Pages serves the website only; email needs a separate provider. Options, 
 - `CHANGELOG.md` is the shared record of what changed and why; `HANDOVER.md` is the current state.
 - If something breaks, GitHub keeps every version: in GitHub Desktop, **History** shows each commit and any file can be restored from there.
 
+## H. Versions: naming, tagging, going back
+
+Every change to the site is one commit, and every commit is a version you can return to.
+
+**Naming.** Commit message = the CHANGELOG entry's version and title, e.g. `v0.9 favicon set, cache-busting`. One CHANGELOG entry per commit. Bump the `?v=` query on `assets/css/style.css` and `assets/js/main.js` in all six `.html` files to the same version (this makes every visitor's browser fetch the new files; Claude does this when preparing a revision).
+
+**Tagging (GitHub Desktop).** After committing: *History* tab → right-click the commit → **Create Tag…** → name `v0.9` → *Create Tag* → *Push origin* (tags are pushed with the next push). Tags appear on GitHub under the repository's *Tags* page, so any version can be found by name rather than by date.
+
+**Looking at an old version.** On github.com: *Commits* (or *Tags*) → pick one → **Browse files** → you see the whole folder as it was; **Code → Download ZIP** gives a copy. In Desktop: *History* → select a commit → the right pane shows exactly which lines changed.
+
+**Going back.**
+- *Undo one revision:* Desktop → *History* → right-click the commit → **Revert changes in commit** → a new commit undoes it → *Push origin*. History is kept; nothing is lost.
+- *Return the whole site to a version:* on github.com open that tag → *Code → Download ZIP* → copy its files over the `website` folder → Desktop shows the differences → commit as `vX.Y rollback to vA.B` → push. Or ask Claude to do the same from the tag.
+- *Before GitHub (v0.3–v0.6):* the `snapshots/` folders, see `snapshots/README.md`. From v0.7 on, GitHub history is the record and no new snapshot folders are made.
+
+**Seeing a version live.** GitHub Pages serves only `main`; to look at an old version in a browser, open its `index.html` from the downloaded ZIP locally.
+
 ## G. Later, if useful
 
 - Branch protection and pull requests: not needed while one person pushes.

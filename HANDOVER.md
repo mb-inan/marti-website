@@ -2,7 +2,7 @@
 
 Live at https://mb-inan.github.io/marti-website/ (GitHub repository mb-inan/marti-website, published 23 Oct 2026 via GitHub Desktop from the `website` folder).
 
-Last updated: 2026-10-24, v0.8 (brand package: ticket mark in rail, bar and footer; favicon) on the laptop, awaiting Burkay's acceptance before push; v0.7.1 (seam two fifths at the top, proportional to the scroll, slow sew-in on page open) on v0.7 (seam on phones as a horizontal stitch under the top bar; desktop live end sways gently at rest; phone live end is a taut lead). Approved by Burkay. Roll back by restoring `snapshots/v0.6-2026-10-23/` (or set `SEAM`, `SEAM_MOBILE` or `TRANSITIONS` to false in `assets/js/main.js`). Read this first in any new session, then `CHANGELOG.md`.
+Last updated: 2026-10-24, v0.9 (favicon set, cache-busting `?v=`, version routine) on the laptop awaiting Burkay's commit; v0.8 (brand package: ticket mark in rail, bar and footer) is live; v0.7.1 (seam two fifths at the top, proportional to the scroll, slow sew-in on page open) on v0.7 (seam on phones as a horizontal stitch under the top bar; desktop live end sways gently at rest; phone live end is a taut lead). Approved by Burkay. Roll back by restoring `snapshots/v0.6-2026-10-23/` (or set `SEAM`, `SEAM_MOBILE` or `TRANSITIONS` to false in `assets/js/main.js`). Read this first in any new session, then `CHANGELOG.md`.
 
 ## 1. What this is
 
@@ -52,6 +52,8 @@ See `docs/DECISIONS.md` for the full log. In short: MARTI wordmark + descriptor;
 - Do not add sections that are not true today (sustainability programmes, certifications in progress) — the Compliance page says "status" for a reason.
 
 ## 7. Working with Claude on this
+
+- **Every revision is one commit**, message = version and title from `CHANGELOG.md`, tagged `vX.Y` in GitHub Desktop. Rolling back to any version: `docs/GITHUB_GUIDE.md` §H. Bump the `?v=` query on `style.css` and `main.js` in all six `.html` files with each revision.
 
 - Changes are proposed as screenshots before they are built; each revision gets a `CHANGELOG.md` entry, a screenshot set and an update to this file.
 - The tex project in claude.ai holds the strategy documents; this repository holds only the website.
