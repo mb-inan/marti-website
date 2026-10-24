@@ -302,6 +302,16 @@ hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .seam.is-closed .tail { display: none; }                        /* fully sewn: no loose end */
 .seam.is-ripping .seam-svg { animation: rip .35s steps(6) both; }
 @keyframes rip { 0% { transform: translateX(0) } 20% { transform: translateX(1.5px) } 40% { transform: translateX(-1.5px) } 60% { transform: translateX(1px) } 80% { transform: translateX(-1px) } 100% { transform: translateX(0) } }
+/* v0.10 thread styles (SEAM_STYLE in main.js). Fine: 1.7 px, matte, a whisper of shadow, no highlight. */
+.seam.style-fine-clay .th-fuzz, .seam.style-fine-ink .th-fuzz, .seam.style-fine-clay .th-light, .seam.style-fine-ink .th-light { display: none; }
+.seam.style-fine-clay .th-body, .seam.style-fine-ink .th-body { filter: none; stroke-width: 1.7px; }
+.seam.style-fine-clay .th-shadow, .seam.style-fine-ink .th-shadow { stroke-width: 2.1px; opacity: .12; transform: translate(.5px, .6px); }
+.seam.style-fine-clay .th-body { stroke: #BE5238; }
+.seam.style-fine-clay .rows .th-body { stroke: #B04A30; }
+.seam.style-fine-ink .th-body, .seam.style-fine-ink .rows .th-body { stroke: var(--ink); }
+.seam.style-fine-ink .th-shadow { opacity: .10; }
+.seam.style-fine-clay .tail .th-body, .seam.style-fine-ink .tail .th-body { stroke-width: 1.5px; }
+
 /* phones: the seam turns horizontal and sits on the bottom edge of the top bar; plain thread (no filter) */
 .seam.is-plain .th-fuzz { display: none; }
 .seam.is-plain .th-body { filter: none; }

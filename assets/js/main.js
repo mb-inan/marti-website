@@ -8,6 +8,7 @@
 const REVIEW_MODE = true;
 const SEAM = true;
 const TRANSITIONS = true;
+const SEAM_STYLE = "fine-clay";  /* v0.10: "cotton" (v0.6 look) | "fine-clay" | "fine-ink" — thread weight and colour, see style.css */
 const SEAM_MOBILE = true;      /* v0.7: horizontal seam under the top bar on phones (set false to keep phones plain) */
 const SEAM_LABEL = typeof window.MARTI_SEAM_LABEL !== "undefined" ? window.MARTI_SEAM_LABEL : false;
 
@@ -167,11 +168,13 @@ const Seam = (() => {
 
   /* Sewn length follows the scroll in proportion: two fifths at the top of the page, growing linearly to
      fully sewn at the bottom. */
-  const SEWN_AT_TOP = 0.4;
+  const SEWN_AT_TOP = 0.4;          /* desktop: two fifths sewn at the top of the page */
+  const SEWN_AT_TOP_PHONE = 0;      /* phone: nothing sewn at the top; the scroll lays the whole seam */
   function targetFromScroll() {
     const max = document.documentElement.scrollHeight - innerHeight;
     const p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 1;
-    return SEWN_AT_TOP + (1 - SEWN_AT_TOP) * p;
+    const top = horiz ? SEWN_AT_TOP_PHONE : SEWN_AT_TOP;
+    return top + (1 - top) * p;
   }
 
   /* ---- geometry ---- */
@@ -189,6 +192,7 @@ const Seam = (() => {
     horiz = mobileMQ.matches;
     el.classList.toggle("is-horizontal", horiz);
     el.classList.toggle("is-plain", horiz);                     /* phones: no cotton filter, same geometry */
+    el.classList.remove("style-cotton", "style-fine-clay", "style-fine-ink"); el.classList.add("style-" + SEAM_STYLE);
     if (horiz) {
       const bar = document.querySelector(".rail");
       const barH = bar ? Math.round(bar.getBoundingClientRect().height) : 64;
@@ -217,19 +221,25 @@ const Seam = (() => {
     pitches = n;
     let loop = "";
     holesG = mk("g", { class: "holes" });
+    /* fine styles: a touch of irregularity — stitch length ±0.4 px, row alignment ±0.25 px — as fabric tension leaves a seam */
+    const fine = SEAM_STYLE !== "cotton";
+    const rnd = (i) => { const x = Math.sin(i * 12.9898 + 78.233) * 43758.5453; return x - Math.floor(x); };
+    const hr = fine ? [1.7, 1.0] : [2.1, 1.2];
     for (let i = 0; i < n; i++) {
-      const y = i * PITCH, yb = y + PITCH;
+      const y = i * PITCH, yb = y + PITCH;                      /* rows stay on the grid so the clip reveal lines up */
+      const j = fine ? (rnd(i) - .5) * 0.8 : 0, k = fine ? (rnd(i + 100) - .5) * 0.5 : 0;
+      const x1 = X1 + k, x2 = X2 - k, ye = yb + j;             /* the looper wanders; the rows do not */
       /* holes at the end of each straight stitch, both rows */
-      const hu = y + STITCH + 1.2, ra = horiz ? 1.2 : 2.1, rb = horiz ? 2.1 : 1.2;
+      const hu = y + STITCH + 1.2, ra = horiz ? hr[1] : hr[0], rb = horiz ? hr[0] : hr[1];
       mk("ellipse", { cx: horiz ? hu : X1, cy: horiz ? X1 : hu, rx: ra, ry: rb, fill: "url(#seam-hole)" }, holesG);
       mk("ellipse", { cx: horiz ? hu : X2, cy: horiz ? X2 : hu, rx: ra, ry: rb, fill: "url(#seam-hole)" }, holesG);
 
       /* looper: across from the first row to the second, wrap it, back under to the first row, wrap it */
       loop += (i ? "" : `M${P(y, X1)} `) +
-        `C${P(y + 3, X1 + 3)} ${P(yb - 6, X2 - 3.5)} ${P(yb - 3.2, X2)} ` +
-        `C${P(yb - 1.6, X2 + 3.4)} ${P(yb + 1.8, X2 + 2.2)} ${P(yb + 0.6, X2 - 1.4)} ` +
-        `C${P(yb - 0.4, X2 - 4)} ${P(yb - 0.2, X1 + 3.6)} ${P(yb + 0.4, X1 + 1.4)} ` +
-        `C${P(yb + 1.6, X1 - 2.4)} ${P(yb - 1.8, X1 - 2.6)} ${P(yb, X1)} `;
+        `C${P(y + 3, x1 + 3)} ${P(ye - 6, x2 - 3.5)} ${P(ye - 3.2, x2)} ` +
+        `C${P(ye - 1.6, x2 + 3.4)} ${P(ye + 1.8, x2 + 2.2)} ${P(ye + 0.6, x2 - 1.4)} ` +
+        `C${P(ye - 0.4, x2 - 4)} ${P(ye - 0.2, x1 + 3.6)} ${P(ye + 0.4, x1 + 1.4)} ` +
+        `C${P(ye + 1.6, x1 - 2.4)} ${P(ye - 1.8, x1 - 2.6)} ${P(yb, X1)} `;
     }
     /* straight stitches: a dashed line per row (dash = stitch, gap = the hole), revealed stitch by stitch
        through a clip rectangle whose height is quantised to whole pitches */
@@ -252,18 +262,19 @@ const Seam = (() => {
   function apply() {
     el.style.setProperty("--sewn", sewn.toFixed(4));
     gLoop.style.strokeDashoffset = loopLen * (1 - sewn);
-    /* straight stitches appear as the looper wraps their row (right row half a pitch before the left), and vanish
-       again when it is pulled back: clip heights in whole pitches */
-    const k = sewn * pitches + 0.0005, dim = horiz ? "width" : "height";
-    clipR.setAttribute(dim, Math.max(0, Math.floor(k + 0.5)) * PITCH);
-    clipL.setAttribute(dim, Math.max(0, Math.floor(k)) * PITCH);
+    /* straight stitches follow the needle */
+    /* the needle thread is laid continuously as the needle advances: the clip edge moves with the looper,
+       the second row a little ahead of the first (the looper reaches it first) */
+    const u = sewn * pitches * PITCH, dim = horiz ? "width" : "height";
+    clipR.setAttribute(dim, Math.max(0, Math.min(pitches * PITCH, u + STITCH * 0.4)));
+    clipL.setAttribute(dim, Math.max(0, u));
     el.classList.toggle("is-closed", sewn >= 0.995);
     if (label) label.update(sewn);
     wake();
   }
   /* On a page open (and after a page change) the thread is sewn in slowly over INTRO_MS with an ease-out,
      so the seam comes down to its two-fifths point rather than snapping there; after that it follows the scroll. */
-  const INTRO_MS = 1900;
+  const INTRO_MS = 9500;            /* slow sew-in on page open / page change; a scroll cancels it and the thread catches up */
   let introT0 = 0, introFrom = 0;
   function loop(now) {
     if (introT0) {
@@ -274,7 +285,7 @@ const Seam = (() => {
     }
     const d = target - sewn;
     if (Math.abs(d) < 0.0008) { sewn = target; apply(); raf = 0; return; }
-    sewn += d * 0.085;                       /* ease toward the target, like thread catching up */
+    sewn += d * 0.07;                        /* ease toward the target, like thread catching up */
     apply();
     raf = requestAnimationFrame(loop);
   }
@@ -367,7 +378,7 @@ const Seam = (() => {
     if (SEAM_LABEL && window.MARTI_makeSeamLabel) label = window.MARTI_makeSeamLabel(el);
     if (reduceMotion()) { sewn = 1; target = 1; apply(); el.classList.add("is-static"); return; }
     sewn = 0; apply();
-    addEventListener("scroll", () => { if (!locked) { target = targetFromScroll(); kick(); } }, { passive: true });
+    addEventListener("scroll", () => { if (!locked) { introT0 = 0; target = targetFromScroll(); kick(); } }, { passive: true });   /* scrolling ends the slow sew-in: pace up to the page position */
     let rz = 0;
     addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { build(); if (!locked) target = targetFromScroll(); apply(); kick(); }, 120); });
     sew();

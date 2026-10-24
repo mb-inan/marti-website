@@ -14,6 +14,19 @@ Screenshots: docs/screenshots/vX.Y/
 
 ---
 
+## v0.10 — 2026-10-24 — fine thread, slow sew-in, phone from zero
+
+Changed:
+- **Thread B.** The seam is now a fine chain stitch in clay: 1.7 px, matte (no highlight, no cotton filter), shadow at a whisper, with a touch of irregularity — stitch length ±0.4 px and row alignment ±0.25 px, deterministic, as fabric tension leaves a seam. Chosen from `docs/mockups/v2/stitch-fine.html` (A as live, B fine clay, C fine ink, D the dashed-line brief). `SEAM_STYLE` in `main.js` switches between `cotton`, `fine-clay`, `fine-ink`; styles in `style.css` under `.seam.style-*`. Loose thread on desktop thinned to 1.5 px.
+- **Slow sew-in on desktop.** Page open and page change now sew the thread in over about 9.5 s (a fifth of the previous pace) toward the two-fifths resting point. Any scroll ends the slow sew-in and the thread paces up to where the page position says it should be, then follows the scroll as before. Catch-up easing softened slightly (0.07 per frame).
+- **Phone starts from nothing.** `SEWN_AT_TOP_PHONE = 0`: at the top of a page the bar edge shows only needle holes; the seam is laid entirely by scrolling and closes at the bottom. Desktop keeps two fifths at the top.
+- **Straight stitches laid continuously.** The needle rows are revealed by a clip edge that moves with the looper (the second row a few pixels ahead, as the looper reaches it first), so each straight stitch is drawn as the needle advances and un-drawn as it retreats, instead of appearing and vanishing whole.
+- Cache-busting bumped to `?v=0.10` in all six pages. Videos: `docs/videos/v0.10-desktop.mp4`, `docs/videos/v0.10-mobile.mp4`. `tools/record_demo.py` waits 4.5 s before scrolling so the slow sew-in is visible.
+
+Decided: Burkay chose B after seeing B and C on the real page at 3×; the other AI's brief (1–1.5 px dashed line, charcoal palette) was weighed and its restraint taken, its dashed-line shorthand and palette not.
+
+Open: Burkay's commit and push; real-phone feel of the from-zero seam.
+
 ## v0.9 — 2026-10-24 — favicon set, cache-busting, version routine
 
 Changed:

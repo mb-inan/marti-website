@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stitch weight — the current seam against finer renderings</title>
+<style>
+  @font-face { font-family: "Archivo"; src: url("../../../assets/fonts/archivo-latin-standard-normal.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
+  :root { --ground:#F5EFE7; --paper:#FBF8F3; --ink:#4A2E24; --text:#3A302B; --muted:#7A6A5F; --line:#DCCFC2; --accent:#C9573A; --linen:url("../../../assets/img/linen.webp"); }
+  html,body { margin:0; background:#EDE4D9; color:var(--text); font: 15px/1.5 "Archivo", system-ui, sans-serif; }
+  .sheet { padding: 36px 40px 60px; }
+  h1 { font-weight: 500; font-size: 22px; margin: 0 0 4px; color: var(--ink); }
+  .sub { color: var(--muted); margin: 0 0 28px; max-width: 84ch; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .card { background: var(--paper); border-radius: 8px; padding: 18px 16px 20px; }
+  .card h2 { font-size: 14.5px; font-weight: 600; margin: 0 0 2px; color: var(--ink); }
+  .card h2 span { display:inline-block; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px; background: var(--ink); color: #fff; font-size: 11.5px; text-align:center; line-height: 22px; margin-right: 8px; }
+  .card p { margin: 0 0 14px; color: var(--muted); font-size: 13px; min-height: 60px; }
+  .row { display: grid; grid-template-columns: 170px 1fr; gap: 12px; }
+  .lbl { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  .slice { position: relative; height: 440px; background: var(--ground) var(--linen) 0 0 / 360px 360px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+  .slice .txt { position:absolute; left: 70px; top: 36px; right: 10px; color: var(--ink); font-size: 11px; line-height: 1.5; }
+  .slice .txt b { display:block; font-size: 15px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 4px; }
+  .mag { position: relative; height: 440px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: var(--ground) var(--linen) 0 0 / 1440px 1440px; }
+  .mag .zoom { position:absolute; left: -158px; top: -960px; width: 170px; height: 440px; transform: scale(4); transform-origin: top left; }
+  .mag .zoom .slice { border: 0; background: none; }
+  svg.seam { position:absolute; left: calc(52px - 13px); top:0; width: 26px; height: 440px; overflow: visible; }
+  svg.seam path { fill:none; stroke-linecap: round; stroke-linejoin: round; }
+  .note { margin-top: 26px; color: var(--muted); font-size: 13px; max-width: 90ch; }
+
+  /* A — as live (T3 cotton, 2.3 px, clay) */
+  .A .th-shadow { stroke:#2A1208; stroke-width:3; opacity:.22; transform: translate(.8px,1px); }
+  .A .th-fuzz { stroke:#C9573A; stroke-width:3.2; opacity:.35; filter:url(#fuzz); }
+  .A .th-body { stroke:#C4563B; stroke-width:2.3; filter:url(#fuzz-soft); }
+  .A .th-light { stroke:#E9A48B; stroke-width:.9; opacity:.5; transform: translate(-.4px,-.3px); }
+  /* B — fine chain stitch, clay: 1.7 px, matte, whisper of shadow, micro-irregular */
+  .B .th-shadow { stroke:#2A1208; stroke-width:2.1; opacity:.12; transform: translate(.5px,.6px); }
+  .B .th-fuzz { display:none; }
+  .B .th-body { stroke:#BE5238; stroke-width:1.7; }
+  .B .th-light { display:none; }
+  /* C — the same in ink thread */
+  .C .th-shadow { stroke:#2A1208; stroke-width:2.1; opacity:.10; transform: translate(.5px,.6px); }
+  .C .th-fuzz { display:none; }
+  .C .th-body { stroke:#4A2E24; stroke-width:1.7; }
+  .C .th-light { display:none; }
+  /* D — the brief: one dashed topstitch line, 1.25 px, 5/3 dash, ink, hairline wander */
+  .D .th-shadow { stroke:#2A1208; stroke-width:1.6; opacity:.10; transform: translate(.4px,.5px); stroke-dasharray: 5 3; }
+  .D .th-fuzz, .D .th-light { display:none; }
+  .D .th-body { stroke:#4A2E24; stroke-width:1.25; stroke-dasharray: 5 3; stroke-linecap: butt; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>Stitch weight</h1>
+  <p class="sub">The live seam (A) against three finer renderings on the same linen. B and C keep the chain-stitch geometry from your reference picture but thin the thread to 1.7 px, drop the sheen and add a touch of irregularity (stitch length and alignment vary by fractions of a pixel, as fabric tension leaves them). D is the other AI's brief taken literally: a single 1.25 px dashed line. Left of each card actual size with text beside it for scale; right 4× at the live end. Below the live end: holes only.</p>
+  <div class="grid" id="grid"></div>
+  <p class="note">All four follow the same scroll behaviour (two fifths at the top, closing at the bottom, slow sew-in). The quieter thread makes the terracotta frame of the ticket the warm note on the page, with the seam supporting it rather than competing. Judge at the 1× column first; the 4× column is only to see what the eye is reading.</p>
+</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="fuzz" filterUnits="userSpaceOnUse" x="-12" y="-12" width="60" height="500"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.6"/><feGaussianBlur stdDeviation=".35"/></filter>
+    <filter id="fuzz-soft" filterUnits="userSpaceOnUse" x="-12" y="-12" width="60" height="500"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale=".7"/></filter>
+    <radialGradient id="hole"><stop offset="0" stop-color="#241109" stop-opacity=".55"/><stop offset=".55" stop-color="#241109" stop-opacity=".18"/><stop offset="1" stop-color="#241109" stop-opacity="0"/></radialGradient>
+    <radialGradient id="hole-fine"><stop offset="0" stop-color="#241109" stop-opacity=".42"/><stop offset=".55" stop-color="#241109" stop-opacity=".12"/><stop offset="1" stop-color="#241109" stop-opacity="0"/></radialGradient>
+  </defs>
+</svg>
+
+<script>
+const W=26, X1=8, X2=18, PITCH=15, STITCH=11.5, H=440, SEWN=.62;
+const CARDS = [
+  ["A","As live","Matte cotton, 2.3 px, clay thread, lit edge and shadow. What is on the site now.", false, "chain"],
+  ["B","Fine chain, clay","Same stitch, 1.7 px, no highlight, shadow at a whisper, micro-irregular. Keeps the warm thread; loses the drawn look.", true, "chain"],
+  ["C","Fine chain, ink","As B in ink-brown thread. Quietest of the chain stitches; the seam becomes texture rather than a line you read.", true, "chain"],
+  ["D","Dashed topstitch (the brief)","One 1.25 px dashed line, 5/3 pattern, ink, with a hairline wander. The web's usual shorthand for stitching, done as well as it can be.", true, "dash"],
+];
+/* deterministic micro-jitter */
+function rnd(i){ const x=Math.sin(i*12.9898+78.233)*43758.5453; return x-Math.floor(x); }
+function geometry(jitter){
+  const n=Math.ceil(H/PITCH)+2; let loop="", holes=[], stitches=[];
+  let y=0;
+  for(let i=0;i<n;i++){
+    const j = jitter ? (rnd(i)-.5) : 0, k = jitter ? (rnd(i+100)-.5) : 0;
+    const pitch = PITCH + j*0.8;                       /* stitch length ±0.4 px */
+    const x1 = X1 + k*0.5, x2 = X2 - k*0.5;            /* row alignment ±0.25 px */
+    const yb = y + pitch;
+    holes.push([x1, y+STITCH+1.2],[x2, y+STITCH+1.2]);
+    stitches.push({x1,x2,y1:y+0.8,y2:y+STITCH, done: yb});
+    loop += (i?"":`M${X1},0 `) + `C${x1+3},${y+3} ${x2-3.5},${yb-6} ${x2},${yb-3.2} C${x2+3.4},${yb-1.6} ${x2+2.2},${yb+1.8} ${x2-1.4},${yb+0.6} C${x2-4},${yb-0.4} ${x1+3.6},${yb-0.2} ${x1+1.4},${yb+0.4} C${x1-2.4},${yb+1.6} ${x1-2.6},${yb-1.8} ${x1},${yb} `;
+    y = yb;
+  }
+  return {loop, stitches, holes, n};
+}
+function dashPath(){ /* a single topstitch line with a hairline wander */
+  let d=`M13,0`; for(let y=0;y<=H;y+=22){ const dx=(rnd(y)-.5)*0.6; d+=` Q${13+dx*1.6},${y+11} ${13+dx},${y+22}`; } return d;
+}
+function seamSVG(cls, jitter, kind){
+  const g=geometry(jitter);
+  let s=`<svg class="seam ${cls}" viewBox="0 0 ${W} ${H}">`;
+  const endY = SEWN*H;
+  if(kind==="dash"){
+    /* holes between dashes, under the line */
+    s+=`<g class="holes">`; for(let y=5;y<H;y+=8) s+=`<ellipse cx="13" cy="${y+2.5}" rx="1.1" ry=".7" fill="url(#hole-fine)"/>`; s+=`</g>`;
+    const d=dashPath();
+    s+=`<clipPath id="c-${cls}"><rect x="0" y="0" width="${W}" height="${endY}"/></clipPath>`;
+    s+=`<g clip-path="url(#c-${cls})"><path class="th-shadow" d="${d}"/><path class="th-body" d="${d}"/></g></svg>`;
+    return s;
+  }
+  const hole = jitter ? "hole-fine" : "hole";
+  s+=`<g class="holes">`+g.holes.map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="${jitter?1.7:2.1}" ry="${jitter?1:1.2}" fill="url(#${hole})"/>`).join("")+`</g>`;
+  const layers=["th-shadow","th-fuzz","th-body","th-light"];
+  const rows = g.stitches.filter(st=>st.done<=endY+1).map(st=>`M${st.x1},${st.y1} L${st.x1},${st.y2} M${st.x2},${st.y1} L${st.x2},${st.y2}`).join(" ");
+  s+=`<g class="rows">`+layers.map(l=>`<path class="${l}" d="${rows}"/>`).join("")+`</g>`;
+  const pitches = g.stitches.filter(st=>st.done<=endY+1).length;
+  const parts = g.loop.split("C"); const loopD = parts.slice(0,1+pitches*4).join("C");
+  s+=`<g class="loop">`+layers.map(l=>`<path class="${l}" d="${loopD}"/>`).join("")+`</g>`;
+  return s+`</svg>`;
+}
+const grid=document.getElementById("grid");
+const copy = `<b>What we make</b>Woven womenswear is our core: shirts, blouses and dresses, from poplin and viscose to crepe, satin and linen.`;
+for(const [id,name,desc,jit,kind] of CARDS){
+  const card=document.createElement("div"); card.className="card";
+  card.innerHTML=`<h2><span>${id}</span>${name}</h2><p>${desc}</p>
+    <div class="row">
+      <div><p class="lbl">1×</p><div class="slice">${seamSVG(id,jit,kind)}<div class="txt">${copy}</div></div></div>
+      <div><p class="lbl">4×</p><div class="mag"><div class="zoom"><div class="slice">${seamSVG(id,jit,kind)}</div></div></div></div>
+    </div>`;
+  grid.appendChild(card);
+}
+</script>
+</body>
+</html>

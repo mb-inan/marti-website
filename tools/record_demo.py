@@ -18,7 +18,7 @@ try:
         ctx = b.new_context(viewport=VP, device_scale_factor=2 if PHONE else 1, is_mobile=PHONE, has_touch=PHONE, record_video_dir=TMP, record_video_size={"width": VP["width"] * (2 if PHONE else 1), "height": VP["height"] * (2 if PHONE else 1)})
         pg = ctx.new_page()
         pg.goto(f"http://127.0.0.1:{PORT}/{START}", wait_until="networkidle")
-        pg.wait_for_timeout(2600)                                   # sew-in
+        pg.wait_for_timeout(4500)                                   # slow sew-in (v0.10), then the scroll makes it catch up
         for y in range(0, 2400, 120): pg.mouse.wheel(0, 120); pg.wait_for_timeout(70)
         pg.wait_for_timeout(900)
         pg.evaluate("window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})")
