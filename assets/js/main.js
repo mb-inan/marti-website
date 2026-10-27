@@ -13,12 +13,12 @@ const SEAM_MOBILE = true;      /* v0.7: horizontal seam under the top bar on pho
 const SEAM_LABEL = typeof window.MARTI_SEAM_LABEL !== "undefined" ? window.MARTI_SEAM_LABEL : false;
 
 const SITE = {
-  name: "MARTI Textile",
+  name: "MARTI Textiles",
   descriptor: "Womenswear manufacturing.",
   brand: {                                   /* v0.8: the ticket mark from the brand package (assets/brand/BRAND.md) */
     rail: "assets/brand/marti-ticket.svg",
     small: "assets/brand/marti-ticket_small-cut.svg",   /* under 100 px wide: heavier cut */
-    dark: "assets/brand/marti-ticket_on-dark.svg",      /* on the footer's dark ground: linen frame, no ground */
+    dark: "assets/brand/marti-ticket_reversed-linen-plate.svg",   /* on dark grounds: linen plate, teal type, terracotta frame */
   },
   legal: "Martı Tekstil Ltd. Şti.",
   nav: [
@@ -56,7 +56,7 @@ function rail() {
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="nav" id="site-nav" aria-label="Main">${links}</nav>
     <a class="rail-cta" href="contact.html">Start a conversation</a>
-    <div class="rail-foot">Commercial office in Manchester<br>Production in İzmir, Türkiye</div>
+    <div class="rail-foot"><small>Commercial office</small><span>Manchester, UK</span><small>Production</small><span>İzmir, Türkiye</span></div>
   </aside>`;
 }
 
@@ -82,7 +82,7 @@ function footer() {
         <ul>${SITE.nav.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join("")}</ul>
       </div>
       <div class="legal">
-        <span>© ${y} ${SITE.legal} MARTI Textile is a trading name of <mark class="ph" data-ph="T-tradingname">[legal entity to confirm]</mark>.</span>
+        <span>© ${y} ${SITE.legal} MARTI Textiles is a trading name of <mark class="ph" data-ph="T-tradingname">[legal entity to confirm]</mark>.</span>
         <span><a href="#">Privacy</a> &nbsp; <a href="#">Code of conduct</a></span>
       </div>
     </div>

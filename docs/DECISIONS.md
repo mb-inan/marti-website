@@ -28,6 +28,7 @@ Newest at the bottom. Each decision: what, why, who, when. Reversible unless mar
 | 22 | 2026-10-23 | Third colour: Dusty teal #3E5F63 for the logo oval (replacing the original sign's navy), letters in linen; available as `--teal` for rare accents. | Keeps continuity with the sign on the building without being blue; distinct from ground, band and accent. Chosen from T1–T4. | Burkay |
 | 23 | 2026-10-27 | The market is "Europe"; the United Kingdom is not named separately in marketing copy ("for brands across Europe"). Legal/customs facts and addresses keep their specific names. | The UK is in Europe; naming both read as a bias. | Burkay |
 | 24 | 2026-10-27 | Children's wovens added as a capability (Capabilities row; one clause on Home), under the womenswear identity; "developed case by case" until the first children's style is sampled. No compliance claim yet. | A specialist is trusted; kidswear is adjacent craft but a different buyer with its own safety rules. | Burkay |
+| 25 | 2026-10-27 | Brand package ZZ governs the site: name MARTI Textiles (never MARTI alone, except the social avatar), deep teal #11383E, linen #F4F0E8, the ticket as main logo, the gull as favicon. | Package confirmed by Burkay; an unrelated label trades as MARTI. | Burkay |
 
 ## Pending decisions
 

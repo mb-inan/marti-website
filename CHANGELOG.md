@@ -14,6 +14,27 @@ Screenshots: docs/screenshots/vX.Y/
 
 ---
 
+## v0.14 — 2026-10-27 — rail foot rebalanced
+
+Changed:
+- Rail foot set as two labelled blocks (option B of three shown): COMMERCIAL OFFICE / Manchester, UK — PRODUCTION / İzmir, Türkiye. Labels in small spaced capitals, places in ink. Replaces the two sentences that wrapped unevenly. Phone bar unchanged (the foot is hidden there).
+- Cache-busting `?v=0.14`.
+
+Decided: Burkay chose B and "Manchester, UK".
+
+## v0.13 — 2026-10-27 — the ZZ brand package: MARTI Textiles, deep teal, the gull
+
+Changed:
+- **Name:** MARTI Textiles (plural) in page titles, `og:site_name`, the mark's alt text, the manifest and the legal line.
+- **Colours:** linen ground `#F4F0E8` (was `#F5EFE7`; linen texture regenerated), teal `#11383E` (was `#3E5F63`), theme colour `#11383E`. Terracotta, clay, ink unchanged.
+- **Logo:** the ZZ ticket (`assets/brand/marti-ticket.svg`) in the rail, the small cut in the phone bar, `marti-ticket_reversed-linen-plate.svg` (linen plate, teal type, terracotta frame — the package's own dark-ground version) in the footer. The derived `_on-dark` file and the v0.8 masters are removed. SVG used on the site; the 1024 PNG of the horizontal lockup remains the link-preview image.
+- **Favicon:** the gull set from the package replaces the ticket favicon set (same wiring, relative paths).
+- `assets/brand/BRAND.md` is the package README. Cache-busting `?v=0.13`.
+
+Decided: decision #25 — brand package ZZ of 27 Oct 2026 governs name, colours and marks; confirmed by Burkay item by item.
+
+Open: the rail foot ("Commercial office in Manchester / Production in İzmir, Türkiye") reads off balance — options to be shown.
+
 ## v0.12 — 2026-10-27 — children's wovens, quietly
 
 Changed:

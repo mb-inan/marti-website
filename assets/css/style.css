@@ -14,7 +14,7 @@
   src: url("../fonts/archivo-latin-standard-italic.woff2") format("woff2-variations"); }
 
 :root {
-  --ground: #F5EFE7;      /* linen */
+  --ground: #F4F0E8;      /* linen */
   --paper: #FBF8F3;
   --ink: #4A2E24;         /* red-brown ink: headings, wordmark fallback */
   --text: #3A302B;        /* body text */
@@ -25,7 +25,7 @@
   --band-deep: #3B2520;   /* footer */
   --accent: #C9573A;      /* clay orange-red: wordmark, links, buttons */
   --accent-hover: #B04A30;
-  --teal: #3E5F63;        /* third colour: the logo oval (replaces the original navy); used sparingly elsewhere */
+  --teal: #11383E;        /* third colour: the logo oval (replaces the original navy); used sparingly elsewhere */
   --ph: #E8B59C;          /* placeholder marks */
   --ph-pale: #F9E2D6;
 
@@ -103,7 +103,10 @@ main > .band-fill:last-child { margin-bottom: 32px; }
 .nav a:hover, .nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
 .rail-cta { font-size: .85rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; align-self: flex-start; }
 .rail-cta:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
-.rail-foot { margin-top: auto; font-size: .78rem; color: var(--muted); line-height: 1.6; }
+.rail-foot { margin-top: auto; }
+.rail-foot small { display: block; color: var(--muted); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }   /* label first, place under (v0.14, option B) */
+.rail-foot span { display: block; color: var(--ink); font-size: .9rem; line-height: 1.3; margin: 1px 0 12px; }
+.rail-foot span:last-child { margin-bottom: 0; }
 .nav-toggle { display: none; background: none; border: 1px solid var(--ink); color: var(--ink); padding: 8px 12px; border-radius: 999px; font: inherit; font-size: .85rem; }
 @media (max-width: 1000px) {
   :root { --rail: 0px; }

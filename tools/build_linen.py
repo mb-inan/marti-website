@@ -10,7 +10,7 @@ OUT = os.path.join(ROOT, "assets", "img", "linen.webp")
 STRENGTH = float(sys.argv[1]) if len(sys.argv) > 1 else 0.55
 SIZE = 720                      # px in the file; CSS shows it at 360 css px
 THREAD = 6                      # px per thread in the file (3 css px): a fairly coarse linen
-GROUND = np.array([245, 239, 231], dtype=float)   # --ground #F5EFE7
+GROUND = np.array([244, 240, 232], dtype=float)   # --ground #F4F0E8 (linen, brand package 27 Oct 2026)
 
 rng = np.random.default_rng(7)
 n = SIZE // THREAD
