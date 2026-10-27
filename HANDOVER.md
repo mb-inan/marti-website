@@ -2,7 +2,7 @@
 
 Live at https://mb-inan.github.io/marti-website/ (GitHub repository mb-inan/marti-website, published 23 Oct 2026 via GitHub Desktop from the `website` folder).
 
-Last updated: 2026-10-24, v0.10 (fine clay thread, slow desktop sew-in with scroll catch-up, phone seam from zero, continuous needle rows) on the laptop awaiting Burkay's commit; v0.9 (favicon set, cache-busting, version routine) committed by Burkay; v0.8 (brand package: ticket mark in rail, bar and footer) is live; v0.7.1 (seam two fifths at the top, proportional to the scroll, slow sew-in on page open) on v0.7 (seam on phones as a horizontal stitch under the top bar; desktop live end sways gently at rest; phone live end is a taut lead). Approved by Burkay. Roll back by restoring `snapshots/v0.6-2026-10-23/` (or set `SEAM`, `SEAM_MOBILE` or `TRANSITIONS` to false in `assets/js/main.js`). Read this first in any new session, then `CHANGELOG.md`.
+Last updated: 2026-10-27, v0.12 (children's wovens as a capability, decision #24) and v0.11 ("across Europe", decision #23) on the laptop awaiting Burkay's commits; v0.10 (fine clay thread, slow desktop sew-in, phone seam from zero) committed by Burkay; v0.9 (favicon set, cache-busting, version routine) committed by Burkay; v0.8 (brand package: ticket mark in rail, bar and footer) is live; v0.7.1 (seam two fifths at the top, proportional to the scroll, slow sew-in on page open) on v0.7 (seam on phones as a horizontal stitch under the top bar; desktop live end sways gently at rest; phone live end is a taut lead). Approved by Burkay. Roll back by restoring `snapshots/v0.6-2026-10-23/` (or set `SEAM`, `SEAM_MOBILE` or `TRANSITIONS` to false in `assets/js/main.js`). Read this first in any new session, then `CHANGELOG.md`.
 
 ## 1. What this is
 
@@ -22,7 +22,7 @@ Owner of the project: Burkay (Manchester). Factory numbers and production claims
 
 ## 3. Decisions in force
 
-See `docs/DECISIONS.md` for the full log. In short: MARTI wordmark + descriptor; dark film hero, light pages; English only; audits named only once permission is confirmed; woven womenswear as the core with other categories "developed case by case"; delivery hanging or boxed as the customer requires; two ways of working (CMT, nominated fabric); audience United Kingdom and Europe; tone rule: calm and confident, no defensive phrasing.
+See `docs/DECISIONS.md` for the full log. In short: MARTI wordmark + descriptor; dark film hero, light pages; English only; audits named only once permission is confirmed; woven womenswear as the core with other categories "developed case by case"; delivery hanging or boxed as the customer requires; two ways of working (CMT, nominated fabric); audience Europe (decision #23: the UK is not named separately); tone rule: calm and confident, no defensive phrasing.
 
 ## 4. How the placeholder system works
 

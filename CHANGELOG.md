@@ -14,6 +14,26 @@ Screenshots: docs/screenshots/vX.Y/
 
 ---
 
+## v0.12 — 2026-10-27 — children's wovens, quietly
+
+Changed:
+- Capabilities, product table: new row after "Other" — **Children's wovens**: "Girls' dresses, blouses and shirts in the same fabrics; developed case by case with the brand's safety requirements."
+- Home, "What we make": "Other womenswear categories, and children's wovens, are developed with you case by case."
+- Nothing else: hero, rail, footer, meta descriptions and the Compliance page unchanged (a "Children's wear" compliance row was proposed and set aside until the production director confirms which standards are followed).
+- Cache-busting `?v=0.12`.
+
+Decided: decision #24 — kidswear is offered as a capability under the womenswear identity, not as a second identity; wording "developed case by case" until the first children's style has been sampled. Confirmed by Burkay line by line.
+
+## v0.11 — 2026-10-27 — Europe, not "the United Kingdom and Europe"
+
+Changed:
+- Every "United Kingdom and Europe" / "UK and Europe" became "Europe" or "across Europe": hero line now "Thirty years of woven womenswear, for brands across Europe." (and the home meta description); delivery cell "Europe, 7–10 days"; logistics, capabilities, process, factory, contact and footer lines accordingly. Kept as they are: the duty row on Capabilities (UK–Türkiye agreement and EU customs union are two different legal facts), the Manchester addresses, "UK hours" on the Factory page.
+- Cache-busting `?v=0.11`.
+
+Decided: decision #23 — the market is Europe; the United Kingdom is part of it and is not called out separately in the copy.
+
+Open: kidswear — whether and how to add children's wovens to Capabilities (proposal pending Burkay's answer).
+
 ## v0.10 — 2026-10-24 — fine thread, slow sew-in, phone from zero
 
 Changed:

@@ -26,6 +26,8 @@ Newest at the bottom. Each decision: what, why, who, when. Reversible unless mar
 | 20 | 2026-10-23 | Palette K2 "Terracotta" replaces the navy palette: linen ground, red-brown ink, the factory floor's terracotta as the filled colour, clay orange-red accent for wordmark, links and buttons. | Blue read as a stock website; warmth wanted without going stale; the band is literally the floor of the factory. Chosen from K1–K4. | Burkay |
 | 21 | 2026-10-23 | Rail copy: "Womenswear manufacturing." under the wordmark; "Commercial office in Manchester" above "Production in İzmir, Türkiye" at the foot. | Details live in the footer; Manchester first for the UK/EU reader. | Burkay |
 | 22 | 2026-10-23 | Third colour: Dusty teal #3E5F63 for the logo oval (replacing the original sign's navy), letters in linen; available as `--teal` for rare accents. | Keeps continuity with the sign on the building without being blue; distinct from ground, band and accent. Chosen from T1–T4. | Burkay |
+| 23 | 2026-10-27 | The market is "Europe"; the United Kingdom is not named separately in marketing copy ("for brands across Europe"). Legal/customs facts and addresses keep their specific names. | The UK is in Europe; naming both read as a bias. | Burkay |
+| 24 | 2026-10-27 | Children's wovens added as a capability (Capabilities row; one clause on Home), under the womenswear identity; "developed case by case" until the first children's style is sampled. No compliance claim yet. | A specialist is trusted; kidswear is adjacent craft but a different buyer with its own safety rules. | Burkay |
 
 ## Pending decisions
 
@@ -33,3 +35,4 @@ Newest at the bottom. Each decision: what, why, who, when. Reversible unless mar
 - Whether the auditing brands (Inditex, H&M) may be named publicly.
 - Form backend.
 - UK legal entity named as "commercial office".
+- Children's wear compliance row (standards followed) — after the production director confirms.

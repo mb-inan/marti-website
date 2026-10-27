@@ -67,7 +67,7 @@ function footer() {
     <div class="wrap">
       <div>
         <a class="brand" href="index.html"><img class="ticket" src="${SITE.brand.dark}" alt="${SITE.name}" width="352" height="176"><span class="descriptor">${SITE.descriptor}</span></a>
-        <p class="mt-2 small" style="max-width:38ch;opacity:.8">Thirty years of woven womenswear, made in İzmir, Türkiye, for brands across the United Kingdom and Europe.</p>
+        <p class="mt-2 small" style="max-width:38ch;opacity:.8">Thirty years of woven womenswear, made in İzmir, Türkiye, for brands across Europe.</p>
       </div>
       <div>
         <h4>Commercial office</h4>
